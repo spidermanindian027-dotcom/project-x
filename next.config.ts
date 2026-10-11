@@ -1,5 +1,9 @@
 import type { NextConfig } from "next";
 
+if (!process.env.DATABASE_URL || !process.env.DATABASE_URL.startsWith('postgres')) {
+  process.env.DATABASE_URL = 'postgresql://build:build@localhost:5432/build?schema=public';
+}
+
 const nextConfig: NextConfig = {
   /* config options here */
   cacheComponents: true,
