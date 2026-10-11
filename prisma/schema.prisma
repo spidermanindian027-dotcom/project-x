@@ -1,0 +1,348 @@
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+enum Role {
+  USER
+  ADMIN
+}
+
+model User {
+  id           String    @id @default(cuid())
+  email        String    @unique
+  passwordHash String
+  fullName     String
+  role         Role      @default(USER)
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
+
+  sessions     Session[]
+  styleProfile   StyleProfile?
+  outfitAnalyses OutfitAnalysis[]
+  wardrobeItems   WardrobeItem[]
+  savedOutfits    SavedOutfit[]
+  stylistSessions StylistSession[]
+  looks           Look[]
+  tryOnJobs       TryOnJob[]
+
+  @@map("users")
+}
+
+model Session {
+  id        String   @id @default(cuid())
+  token     String   @unique
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  expiresAt DateTime
+  ipAddress String?
+  userAgent String?
+  createdAt DateTime @default(now())
+
+  @@index([userId])
+  @@index([token])
+  @@map("sessions")
+}
+
+enum BodyType {
+  PETITE
+  STRAIGHT
+  ATHLETIC
+  PEAR
+  APPLE
+  HOURGLASS
+  RECTANGULAR
+  PREFER_NOT_TO_SAY
+}
+
+enum StyleArchetype {
+  QUIET_LUXURY
+  AVANT_GARDE
+  MINIMAL_TAILORED
+  OLD_MONEY
+  STREETWEAR_EDGE
+  ROMANTIC_FEMININE
+  CLASSIC_PREPPY
+  BOHEMIAN
+  POWER_DRESSING
+  ECLECTIC_ARTISAN
+}
+
+model StyleProfile {
+  id                   String          @id @default(cuid())
+  userId               String          @unique
+  user                 User            @relation(fields: [userId], references: [id], onDelete: Cascade)
+  primaryArchetype     StyleArchetype?
+  secondaryArchetype   StyleArchetype?
+  styleKeywords        String[]        @default([])
+  bodyProportionType   BodyType        @default(PREFER_NOT_TO_SAY)
+  proportionConfidence Float           @default(0)
+  proportionSource     String          @default("manual")
+  preferredColours     String[]        @default([])
+  avoidedColours       String[]        @default([])
+  skinToneCategory     String          @default("unset")
+  skinToneConfidence   Float           @default(0)
+  occasionWeekday      String          @default("casual")
+  occasionWeekend      String          @default("casual")
+  occasionFormal       Boolean         @default(false)
+  referencePhotoUrl    String?
+  referencePhotoKey    String?
+  onboardingCompleted  Boolean         @default(false)
+  onboardingStep       Int             @default(1)
+  createdAt            DateTime        @default(now())
+  updatedAt            DateTime        @updatedAt
+
+  @@map("style_profiles")
+}
+
+model OutfitAnalysis {
+  id                     String   @id @default(cuid())
+  userId                 String
+  user                   User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  requestId              String   @unique
+  imageUrl               String
+  imageKey               String
+  overallScore           Float
+  confidence             Float
+  colourHarmonyScore     Float
+  fitProportionScore     Float
+  coordinationScore      Float
+  occasionScore          Float
+  accessoriesScore       Float
+  styleCoherenceScore    Float
+  styleLabel             String
+  whatWorks              String[]
+  areasToImprove         String[]
+  recommendedColours     String[]
+  recommendedFootwear    String[]
+  recommendedAccessories String[]
+  styleTags              String[]
+  occasionObservations   String
+  providerUsed           String
+  createdAt              DateTime @default(now())
+
+  @@index([userId])
+  @@map("outfit_analyses")
+}
+
+enum WardrobeCategory {
+  TOPS
+  SHIRTS
+  TROUSERS
+  JEANS
+  SHORTS
+  DRESSES
+  SKIRTS
+  JACKETS
+  SWEATERS
+  HOODIES
+  SHOES
+  BOOTS
+  BAGS
+  WATCHES
+  SUNGLASSES
+  JEWELLERY
+  OTHER_ACCESSORIES
+}
+
+enum FormalityLevel {
+  CASUAL
+  SMART_CASUAL
+  BUSINESS
+  FORMAL
+  EVENING_GALA
+}
+
+enum SeasonCategory {
+  SPRING
+  SUMMER
+  AUTUMN
+  WINTER
+  ALL_SEASON
+}
+
+model WardrobeItem {
+  id             String           @id @default(cuid())
+  userId         String
+  user           User             @relation(fields: [userId], references: [id], onDelete: Cascade)
+  name           String
+  category       WardrobeCategory
+  subCategory    String?
+  dominantColor  String           // e.g. "Charcoal", "Warm Ivory", "Navy", "Emerald"
+  colorHex       String?          // e.g. "#1a1a1a"
+  pattern        String?          // "Solid", "Striped", "Houndstooth", etc.
+  material       String?          // "Virgin Wool", "Silk", "Cashmere", "Denim", etc.
+  style          String?          // "Minimalist", "Oversized", "Tailored", etc.
+  formality      FormalityLevel   @default(CASUAL)
+  season         SeasonCategory   @default(ALL_SEASON)
+  fit            String?          // "Relaxed", "Slim", "Oversized", "Structured"
+  imageUrl       String
+  imageKey       String
+  isFavorite     Boolean          @default(false)
+  notes          String?
+  createdAt      DateTime         @default(now())
+  updatedAt      DateTime         @updatedAt
+
+  savedOutfitItems SavedOutfitItem[]
+  lookItems        LookItem[]
+
+  @@index([userId])
+  @@index([category])
+  @@map("wardrobe_items")
+}
+
+model SavedOutfit {
+  id                    String            @id @default(cuid())
+  userId                String
+  user                  User              @relation(fields: [userId], references: [id], onDelete: Cascade)
+  title                 String
+  occasion              String
+  colorRationale        String
+  proportionRationale   String
+  occasionSuitability   String
+  explanation           String
+  alternatives          String[]          @default([])
+  isFavorite            Boolean           @default(false)
+  createdAt             DateTime          @default(now())
+  updatedAt             DateTime          @updatedAt
+
+  items                 SavedOutfitItem[]
+
+  @@index([userId])
+  @@map("saved_outfits")
+}
+
+model SavedOutfitItem {
+  id             String       @id @default(cuid())
+  outfitId       String
+  outfit         SavedOutfit  @relation(fields: [outfitId], references: [id], onDelete: Cascade)
+  wardrobeItemId String
+  wardrobeItem   WardrobeItem @relation(fields: [wardrobeItemId], references: [id], onDelete: Cascade)
+
+  @@unique([outfitId, wardrobeItemId])
+  @@map("saved_outfit_items")
+}
+
+model StylistSession {
+  id        String           @id @default(cuid())
+  userId    String
+  user      User             @relation(fields: [userId], references: [id], onDelete: Cascade)
+  title     String           @default("Styling Consultation")
+  createdAt DateTime         @default(now())
+  updatedAt DateTime         @updatedAt
+
+  messages  StylistMessage[]
+
+  @@index([userId])
+  @@map("stylist_sessions")
+}
+
+model StylistMessage {
+  id                String         @id @default(cuid())
+  sessionId         String
+  session           StylistSession @relation(fields: [sessionId], references: [id], onDelete: Cascade)
+  role              String         // "user" | "assistant" | "system"
+  content           String
+  referencedItemIds String[]       @default([])
+  createdAt         DateTime       @default(now())
+
+  @@index([sessionId])
+  @@map("stylist_messages")
+}
+
+enum LookSource {
+  OUTFIT_MATCH
+  SCANNER_ANALYSIS
+  MANUAL_CURATION
+}
+
+enum TryOnStatus {
+  PENDING
+  PROCESSING
+  COMPLETED
+  FAILED
+}
+
+model Look {
+  id           String      @id @default(cuid())
+  userId       String
+  user         User        @relation(fields: [userId], references: [id], onDelete: Cascade)
+  name         String
+  notes        String?
+  source       LookSource  @default(MANUAL_CURATION)
+  overallScore Float?
+  isFavorite   Boolean     @default(false)
+  analysisId   String?     // optional reference to OutfitAnalysis
+  createdAt    DateTime    @default(now())
+  updatedAt    DateTime    @updatedAt
+
+  items        LookItem[]
+
+  @@index([userId])
+  @@map("looks")
+}
+
+model LookItem {
+  id             String       @id @default(cuid())
+  lookId         String
+  look           Look         @relation(fields: [lookId], references: [id], onDelete: Cascade)
+  wardrobeItemId String
+  wardrobeItem   WardrobeItem @relation(fields: [wardrobeItemId], references: [id], onDelete: Cascade)
+
+  @@unique([lookId, wardrobeItemId])
+  @@map("look_items")
+}
+
+model TryOnJob {
+  id                  String      @id @default(cuid())
+  userId              String
+  user                User        @relation(fields: [userId], references: [id], onDelete: Cascade)
+  referenceImageUrl   String
+  referenceImageKey   String?
+  selectedItemIds     String[]    @default([])
+  provider            String      // e.g. "development_mock", "replicate_idm_vton"
+  modelIdentifier     String      @default("vestra-vton-dev-v1")
+  status              TryOnStatus @default(PENDING)
+  resultImageUrl      String?
+  resultImageKey      String?
+  errorMessage        String?
+  durationMs          Int?
+  createdAt           DateTime    @default(now())
+  updatedAt           DateTime    @updatedAt
+
+  @@index([userId])
+  @@map("try_on_jobs")
+}
+
+enum LogSeverity {
+  INFO
+  WARN
+  SECURITY
+  ERROR
+}
+
+model SecurityAuditLog {
+  id           String      @id @default(cuid())
+  requestId    String
+  timestamp    DateTime    @default(now())
+  severity     LogSeverity @default(INFO)
+  event        String      // e.g. "LOGIN_FAILURE", "AI_TIMEOUT", "UNAUTHORIZED_ACCESS", "RATE_LIMIT_EXCEEDED", "UPLOAD_FAILED"
+  route        String
+  method       String
+  userId       String?
+  ipAddress    String?
+  userAgent    String?
+  details      Json?       // redacted structured metadata
+  resolved     Boolean     @default(false)
+
+  @@index([severity])
+  @@index([event])
+  @@index([timestamp])
+  @@map("security_audit_logs")
+}
+
+
