@@ -73,13 +73,13 @@ export function Header() {
 
         {/* Desktop CTAs */}
         <div className="hidden md:flex items-center space-x-3">
-          <Link href="/login">
+          <Link href="/dashboard">
             <VaynButton
               variant="secondary"
               size="sm"
               className="border-[#DED5C8] text-[#24231F] hover:bg-[#E9E1D6]"
             >
-              Sign In
+              Enter Atelier
             </VaynButton>
           </Link>
           <Link href="/onboarding">
@@ -152,9 +152,9 @@ export function Header() {
               Try-On & Scan
             </Link>
             <div className="pt-4 flex flex-col gap-3">
-              <Link href="/login" onClick={() => setMobileMenuOpen(false)}>
+              <Link href="/dashboard" onClick={() => setMobileMenuOpen(false)}>
                 <VaynButton variant="secondary" className="w-full border-[#DED5C8] text-[#24231F]">
-                  Sign In
+                  Enter Atelier
                 </VaynButton>
               </Link>
               <Link href="/onboarding" onClick={() => setMobileMenuOpen(false)}>

@@ -75,8 +75,13 @@ export function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="/login" className="hover:text-[#A95239] transition-colors">
-                  Client Portal
+                <Link href="/dashboard" className="hover:text-[#A95239] transition-colors">
+                  Atelier Studio
+                </Link>
+              </li>
+              <li>
+                <Link href="/admin" className="hover:text-[#A95239] transition-colors">
+                  Admin Console
                 </Link>
               </li>
             </ul>

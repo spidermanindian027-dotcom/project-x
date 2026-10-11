@@ -141,20 +141,64 @@ export async function clearSessionCookie(): Promise<void> {
 }
 
 /**
+ * Direct Access Mode: Provides or creates the default client user
+ * so visitors can immediately use the website (Wardrobe, Scanner, Stylist, Outfits)
+ * without requiring account registration or login.
+ */
+export async function getOrCreateGuestUser(): Promise<SafeUser> {
+  try {
+    const demoEmail = 'client@vestra.ai';
+    let user = await prisma.user.findFirst({
+      where: { role: 'USER' },
+      orderBy: { createdAt: 'asc' },
+    });
+
+    if (!user) {
+      user = await prisma.user.create({
+        data: {
+          email: demoEmail,
+          fullName: 'Elena Vance',
+          passwordHash: '$2a$12$LJXk3c28Vn1WwYfF8Q98E.3Fm4b88Qy7rZ08L7V89012345678901',
+          role: 'USER',
+        },
+      });
+    }
+
+    return sanitizeUser(user);
+  } catch {
+    return {
+      id: 'guest_client_vayn',
+      email: 'client@vestra.ai',
+      fullName: 'Elena Vance',
+      role: 'USER' as Role,
+      createdAt: new Date(),
+      updatedAt: new Date(),
+    };
+  }
+}
+
+/**
  * Retrieves and validates the current user from the incoming request cookies.
  * Compatible with Next.js 16 async Request APIs.
+ * If no session token is present, falls back to direct guest mode for non-admin features.
  */
 export async function getCurrentUser(): Promise<SafeUser | null> {
   try {
     const cookieStore = await cookies();
     const token = cookieStore.get(SESSION_COOKIE_NAME)?.value;
-    if (!token) {
-      return null;
+    if (token) {
+      const result = await validateSessionToken(token);
+      if (result) {
+        return result.user;
+      }
     }
 
-    const result = await validateSessionToken(token);
-    return result ? result.user : null;
+    // Direct Access Mode:
+    // If no session token is provided, seamlessly provide the client user
+    // so any visitor can directly access all features without forced login!
+    return await getOrCreateGuestUser();
   } catch {
     return null;
   }
 }
+

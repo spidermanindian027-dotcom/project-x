@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { redirect } from 'next/navigation';
 import { getCurrentUser } from '@/lib/auth/session';
 import { AppHeader } from '@/components/layout/app-header';
 import { AppSidebar } from '@/components/layout/app-sidebar';
@@ -11,10 +10,6 @@ export default async function AppLayout({
   children: React.ReactNode;
 }) {
   const user = await getCurrentUser();
-
-  if (!user) {
-    redirect('/login');
-  }
 
   return (
     <div className="min-h-screen bg-[#1a1a1a] text-[#f5f0e8] flex flex-col pb-16 md:pb-0">
