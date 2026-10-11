@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { Playfair_Display, Inter } from 'next/font/google';
+import { Playfair_Display, Sora } from 'next/font/google';
 import './globals.css';
 
 const playfair = Playfair_Display({
@@ -8,16 +8,29 @@ const playfair = Playfair_Display({
   display: 'swap',
 });
 
-const inter = Inter({
+const sora = Sora({
   subsets: ['latin'],
   variable: '--font-sans',
   display: 'swap',
 });
 
 export const metadata: Metadata = {
-  title: 'VESTRA — Editorial Fashion AI Platform',
+  title: 'VAYN — Your Style. Smarter. With AI.',
   description:
-    'Curated wardrobe intelligence, high-fashion AI styling, and editorial lookbook curation.',
+    'Discover your personal style, elevate daily outfits, explore curated fashion trends, and unlock your digital wardrobe with VAYN.',
+  keywords: [
+    'fashion AI',
+    'outfit scanner',
+    'capsule wardrobe',
+    'AI stylist',
+    'personal styling',
+    'VAYN',
+    'Gen Z style',
+  ],
+  authors: [{ name: 'VAYN' }],
+  icons: {
+    icon: '/favicon.ico',
+  },
 };
 
 export default function RootLayout({
@@ -28,9 +41,9 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`dark scroll-smooth ${playfair.variable} ${inter.variable}`}
+      className={`scroll-smooth ${playfair.variable} ${sora.variable}`}
     >
-      <body className="min-h-screen bg-[#1a1a1a] text-[#f5f0e8] font-sans antialiased selection:bg-[#e8c547] selection:text-[#1a1a1a]">
+      <body className="min-h-screen bg-[#1C1B18] text-[#F4EFE6] font-sans antialiased selection:bg-[#A95239] selection:text-[#F4EFE6]">
         {children}
       </body>
     </html>

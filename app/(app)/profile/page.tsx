@@ -186,23 +186,23 @@ export default function ProfilePage() {
   return (
     <div className="max-w-4xl mx-auto py-8 px-4 space-y-8">
       {/* Header */}
-      <div className="border-b border-[#9ca3af]/15 pb-6 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+      <div className="border-b border-[#DED5C8]/10 pb-6 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
         <div>
-          <span className="text-[10px] font-semibold tracking-[0.25em] text-[#e8c547] uppercase block mb-1">
-            Client Dossier
+          <span className="text-[10px] font-semibold tracking-[0.25em] text-[#A95239] uppercase block mb-1 font-mono">
+            VAYN Client Dossier
           </span>
-          <h1 className="font-serif text-3xl md:text-4xl font-normal text-[#f5f0e8] tracking-tight">
+          <h1 className="font-serif text-3xl md:text-4xl font-normal text-[#F4EFE6] tracking-tight">
             Style Fit Profile
           </h1>
-          <p className="text-xs text-[#9ca3af] mt-1">
-            Personal identity metrics, proportion configurations, and wardrobe calibrations.
+          <p className="text-xs text-[#6D6961] mt-1">
+            Personal style metrics, proportion configurations, and wardrobe calibrations.
           </p>
         </div>
 
         {user?.role && (
           <div className="flex items-center gap-2">
-            <span className="text-[10px] font-mono uppercase tracking-widest px-2.5 py-1 bg-[#e8c547]/10 text-[#e8c547] border border-[#e8c547]/30 rounded-sm">
-              Role: {user.role}
+            <span className="text-[10px] font-mono uppercase tracking-widest px-2.5 py-1 bg-[#A95239]/10 text-[#A95239] border border-[#A95239]/30 rounded">
+              Tier: {user.role}
             </span>
           </div>
         )}
@@ -210,7 +210,7 @@ export default function ProfilePage() {
 
       {feedback && (
         <div
-          className={`p-3 text-xs flex items-center gap-2 rounded-sm border ${
+          className={`p-3 text-xs flex items-center gap-2 rounded border ${
             feedback.type === 'success'
               ? 'bg-emerald-950/40 border-emerald-800 text-emerald-200'
               : 'bg-red-950/40 border-red-800 text-red-200'
@@ -228,20 +228,20 @@ export default function ProfilePage() {
       {/* Top Grid: User Info & Photo */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         {/* User Card */}
-        <VestraCard variant="bordered" padding="md" className="md:col-span-2">
+        <VestraCard variant="bordered" padding="md" className="md:col-span-2 border-[#DED5C8]/15 bg-[#24231F]">
           <div className="flex items-start gap-4">
-            <div className="h-12 w-12 rounded-full bg-[#262626] border border-[#e8c547]/30 flex items-center justify-center shrink-0">
-              <UserCircle2 className="h-7 w-7 text-[#e8c547]" />
+            <div className="h-12 w-12 rounded-full bg-[#1C1B18] border border-[#A95239]/40 flex items-center justify-center shrink-0">
+              <UserCircle2 className="h-7 w-7 text-[#A95239]" />
             </div>
             <div className="space-y-1">
-              <h2 className="text-base font-semibold text-[#f5f0e8]">
+              <h2 className="text-base font-semibold text-[#F4EFE6]">
                 {user?.fullName || 'Private Client'}
               </h2>
-              <div className="flex items-center gap-2 text-xs text-[#9ca3af]">
+              <div className="flex items-center gap-2 text-xs text-[#6D6961]">
                 <Mail className="h-3.5 w-3.5" />
                 <span>{user?.email}</span>
               </div>
-              <div className="flex items-center gap-2 text-[11px] text-[#9ca3af]/80 font-mono">
+              <div className="flex items-center gap-2 text-[11px] text-[#6D6961] font-mono">
                 <Calendar className="h-3.5 w-3.5" />
                 <span>
                   Member since {user?.createdAt ? new Date(user.createdAt).toLocaleDateString() : 'N/A'}
@@ -250,12 +250,12 @@ export default function ProfilePage() {
             </div>
           </div>
 
-          <div className="mt-6 pt-4 border-t border-[#9ca3af]/10 grid grid-cols-2 gap-4 text-xs">
+          <div className="mt-6 pt-4 border-t border-[#DED5C8]/10 grid grid-cols-2 gap-4 text-xs">
             <div>
-              <span className="text-[10px] text-[#9ca3af] uppercase tracking-wider block">
+              <span className="text-[10px] text-[#6D6961] uppercase tracking-wider block font-mono">
                 Primary Aesthetic
               </span>
-              <span className="text-[#f5f0e8] font-medium mt-0.5 block">
+              <span className="text-[#F4EFE6] font-medium mt-0.5 block">
                 {profile?.primaryArchetype?.replace(/_/g, ' ') || 'Not Configured'}
               </span>
             </div>
@@ -287,17 +287,17 @@ export default function ProfilePage() {
         </VestraCard>
 
         {/* Reference Photo Card */}
-        <VestraCard variant="bordered" padding="md" className="flex flex-col justify-between">
+        <VestraCard variant="bordered" padding="md" className="flex flex-col justify-between border-[#DED5C8]/15 bg-[#24231F]">
           <div>
             <div className="flex items-center justify-between mb-3">
-              <span className="text-[10px] font-mono uppercase text-[#e8c547]">
+              <span className="text-[10px] font-mono uppercase text-[#A95239] font-semibold">
                 Reference Portrait
               </span>
               {profile?.referencePhotoUrl && (
                 <button
                   type="button"
                   onClick={handleDeletePhoto}
-                  className="text-red-400 hover:text-red-300 p-1 rounded-sm"
+                  className="text-red-400 hover:text-red-300 p-1 rounded"
                   title="Remove reference photo"
                 >
                   <Trash2 className="h-4 w-4" />
@@ -306,7 +306,7 @@ export default function ProfilePage() {
             </div>
 
             {profile?.referencePhotoUrl ? (
-              <div className="relative group rounded-sm overflow-hidden border border-[#9ca3af]/20">
+              <div className="relative group rounded overflow-hidden border border-[#DED5C8]/15">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   src={profile.referencePhotoUrl}
@@ -315,63 +315,63 @@ export default function ProfilePage() {
                 />
               </div>
             ) : (
-              <div className="h-44 border border-dashed border-[#9ca3af]/25 rounded-sm flex flex-col items-center justify-center p-4 text-center bg-[#262626]/20">
-                <Camera className="h-7 w-7 text-[#9ca3af]/50 mb-2" />
-                <span className="text-xs text-[#9ca3af]">No Photo Calibrated</span>
-                <span className="text-[10px] text-[#9ca3af]/60 mt-1">
+              <div className="h-44 border border-dashed border-[#DED5C8]/20 rounded flex flex-col items-center justify-center p-4 text-center bg-[#1C1B18]">
+                <Camera className="h-7 w-7 text-[#6D6961]/50 mb-2" />
+                <span className="text-xs text-[#6D6961]">No Photo Calibrated</span>
+                <span className="text-[10px] text-[#6D6961]/70 mt-1 font-mono">
                   Upload via onboarding or scanner
                 </span>
               </div>
             )}
           </div>
 
-          <div className="mt-3 text-[10px] text-[#9ca3af] leading-tight flex items-center gap-1.5">
-            <Shield className="h-3.5 w-3.5 text-[#e8c547] shrink-0" />
-            <span>Encrypted fit reference for AI styling.</span>
+          <div className="mt-3 text-[10px] text-[#6D6961] leading-tight flex items-center gap-1.5 font-mono">
+            <Shield className="h-3.5 w-3.5 text-[#A95239] shrink-0" />
+            <span>Encrypted fit reference for VAYN AI.</span>
           </div>
         </VestraCard>
       </div>
 
       {/* Colour Palette Summary */}
-      <VestraCard variant="bordered" padding="md">
-        <h3 className="text-sm font-semibold text-[#f5f0e8] uppercase tracking-wider mb-3">
+      <VestraCard variant="bordered" padding="md" className="border-[#DED5C8]/15 bg-[#24231F]">
+        <h3 className="text-sm font-semibold text-[#F4EFE6] uppercase tracking-wider mb-3 font-mono">
           Calibrated Color Palette
         </h3>
         <div className="space-y-4">
           <div>
-            <span className="text-[11px] text-[#9ca3af] block mb-2">Preferred Hues:</span>
+            <span className="text-[11px] text-[#6D6961] block mb-2 font-mono">Preferred Hues:</span>
             {profile?.preferredColours && profile.preferredColours.length > 0 ? (
               <div className="flex flex-wrap gap-2">
                 {profile.preferredColours.map((c) => (
                   <div
                     key={c}
-                    className="flex items-center gap-2 px-2.5 py-1 bg-[#262626] border border-[#9ca3af]/20 rounded-sm text-xs text-[#f5f0e8]"
+                    className="flex items-center gap-2 px-2.5 py-1 bg-[#1C1B18] border border-[#DED5C8]/15 rounded text-xs text-[#F4EFE6]"
                   >
                     <span
                       className="h-3 w-3 rounded-full border border-black/30"
-                      style={{ backgroundColor: COLOR_MAP[c] || '#9ca3af' }}
+                      style={{ backgroundColor: COLOR_MAP[c] || '#6D6961' }}
                     />
                     <span>{c}</span>
                   </div>
                 ))}
               </div>
             ) : (
-              <span className="text-xs text-[#9ca3af]/60 italic">No preferred hues selected</span>
+              <span className="text-xs text-[#6D6961]/60 italic">No preferred hues selected</span>
             )}
           </div>
 
           {profile?.avoidedColours && profile.avoidedColours.length > 0 && (
             <div>
-              <span className="text-[11px] text-[#9ca3af] block mb-2">Avoided Hues:</span>
+              <span className="text-[11px] text-[#6D6961] block mb-2 font-mono">Avoided Hues:</span>
               <div className="flex flex-wrap gap-2">
                 {profile.avoidedColours.map((c) => (
                   <div
                     key={c}
-                    className="flex items-center gap-2 px-2.5 py-1 bg-red-950/20 border border-red-900/30 rounded-sm text-xs text-red-200"
+                    className="flex items-center gap-2 px-2.5 py-1 bg-red-950/20 border border-red-900/30 rounded text-xs text-red-200"
                   >
                     <span
                       className="h-3 w-3 rounded-full border border-black/30"
-                      style={{ backgroundColor: COLOR_MAP[c] || '#9ca3af' }}
+                      style={{ backgroundColor: COLOR_MAP[c] || '#6D6961' }}
                     />
                     <span>{c}</span>
                   </div>
@@ -383,12 +383,12 @@ export default function ProfilePage() {
       </VestraCard>
 
       {/* Edit Section Form */}
-      <VestraCard variant="bordered" padding="lg">
-        <div className="border-b border-[#9ca3af]/15 pb-4 mb-6">
-          <span className="text-[10px] font-semibold tracking-[0.25em] text-[#e8c547] uppercase block mb-1">
+      <VestraCard variant="bordered" padding="lg" className="border-[#DED5C8]/15 bg-[#24231F]">
+        <div className="border-b border-[#DED5C8]/10 pb-4 mb-6">
+          <span className="text-[10px] font-semibold tracking-[0.25em] text-[#A95239] uppercase block mb-1 font-mono">
             Calibration Settings
           </span>
-          <h3 className="font-serif text-xl font-normal text-[#f5f0e8] tracking-tight">
+          <h3 className="font-serif text-xl font-normal text-[#F4EFE6] tracking-tight">
             Edit Style Preferences
           </h3>
         </div>
@@ -397,13 +397,13 @@ export default function ProfilePage() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {/* Primary Archetype */}
             <div>
-              <label className="text-xs font-semibold text-[#f5f0e8] uppercase tracking-wider block mb-2">
+              <label className="text-xs font-semibold text-[#F4EFE6] uppercase tracking-wider block mb-2 font-mono">
                 Primary Aesthetic Archetype
               </label>
               <select
                 value={primaryArchetype}
                 onChange={(e) => setPrimaryArchetype(e.target.value)}
-                className="w-full bg-[#262626] border border-[#9ca3af]/30 text-xs text-[#f5f0e8] rounded-sm p-2.5 focus:border-[#e8c547] focus:outline-none"
+                className="w-full bg-[#1C1B18] border border-[#DED5C8]/20 text-xs text-[#F4EFE6] rounded p-2.5 focus:border-[#A95239] focus:outline-none"
               >
                 <option value="">Select Primary Archetype</option>
                 {STYLE_ARCHETYPES.map((arch) => (
@@ -416,13 +416,13 @@ export default function ProfilePage() {
 
             {/* Secondary Archetype */}
             <div>
-              <label className="text-xs font-semibold text-[#f5f0e8] uppercase tracking-wider block mb-2">
+              <label className="text-xs font-semibold text-[#F4EFE6] uppercase tracking-wider block mb-2 font-mono">
                 Secondary Aesthetic Archetype
               </label>
               <select
                 value={secondaryArchetype}
                 onChange={(e) => setSecondaryArchetype(e.target.value)}
-                className="w-full bg-[#262626] border border-[#9ca3af]/30 text-xs text-[#f5f0e8] rounded-sm p-2.5 focus:border-[#e8c547] focus:outline-none"
+                className="w-full bg-[#1C1B18] border border-[#DED5C8]/20 text-xs text-[#F4EFE6] rounded p-2.5 focus:border-[#A95239] focus:outline-none"
               >
                 <option value="">None Selected</option>
                 {STYLE_ARCHETYPES.map((arch) => (
@@ -435,13 +435,13 @@ export default function ProfilePage() {
 
             {/* Body Proportion */}
             <div>
-              <label className="text-xs font-semibold text-[#f5f0e8] uppercase tracking-wider block mb-2">
+              <label className="text-xs font-semibold text-[#F4EFE6] uppercase tracking-wider block mb-2 font-mono">
                 Body Proportion Architecture
               </label>
               <select
                 value={bodyProportion}
                 onChange={(e) => setBodyProportion(e.target.value)}
-                className="w-full bg-[#262626] border border-[#9ca3af]/30 text-xs text-[#f5f0e8] rounded-sm p-2.5 focus:border-[#e8c547] focus:outline-none"
+                className="w-full bg-[#1C1B18] border border-[#DED5C8]/20 text-xs text-[#F4EFE6] rounded p-2.5 focus:border-[#A95239] focus:outline-none"
               >
                 {BODY_TYPES.map((bt) => (
                   <option key={bt} value={bt}>
@@ -453,13 +453,13 @@ export default function ProfilePage() {
 
             {/* Skin Undertone */}
             <div>
-              <label className="text-xs font-semibold text-[#f5f0e8] uppercase tracking-wider block mb-2">
+              <label className="text-xs font-semibold text-[#F4EFE6] uppercase tracking-wider block mb-2 font-mono">
                 Skin Tone Undertone
               </label>
               <select
                 value={skinTone}
                 onChange={(e) => setSkinTone(e.target.value)}
-                className="w-full bg-[#262626] border border-[#9ca3af]/30 text-xs text-[#f5f0e8] rounded-sm p-2.5 focus:border-[#e8c547] focus:outline-none"
+                className="w-full bg-[#1C1B18] border border-[#DED5C8]/20 text-xs text-[#F4EFE6] rounded p-2.5 focus:border-[#A95239] focus:outline-none"
               >
                 <option value="warm">Warm</option>
                 <option value="cool">Cool</option>
@@ -470,13 +470,13 @@ export default function ProfilePage() {
 
             {/* Weekday Occasion */}
             <div>
-              <label className="text-xs font-semibold text-[#f5f0e8] uppercase tracking-wider block mb-2">
+              <label className="text-xs font-semibold text-[#F4EFE6] uppercase tracking-wider block mb-2 font-mono">
                 Weekday Primary Occasion
               </label>
               <select
                 value={weekdayOccasion}
                 onChange={(e) => setWeekdayOccasion(e.target.value)}
-                className="w-full bg-[#262626] border border-[#9ca3af]/30 text-xs text-[#f5f0e8] rounded-sm p-2.5 focus:border-[#e8c547] focus:outline-none"
+                className="w-full bg-[#1C1B18] border border-[#DED5C8]/20 text-xs text-[#F4EFE6] rounded p-2.5 focus:border-[#A95239] focus:outline-none"
               >
                 <option value="casual">Casual</option>
                 <option value="smart_casual">Smart Casual</option>
@@ -487,13 +487,13 @@ export default function ProfilePage() {
 
             {/* Weekend Occasion */}
             <div>
-              <label className="text-xs font-semibold text-[#f5f0e8] uppercase tracking-wider block mb-2">
+              <label className="text-xs font-semibold text-[#F4EFE6] uppercase tracking-wider block mb-2 font-mono">
                 Weekend Primary Occasion
               </label>
               <select
                 value={weekendOccasion}
                 onChange={(e) => setWeekendOccasion(e.target.value)}
-                className="w-full bg-[#262626] border border-[#9ca3af]/30 text-xs text-[#f5f0e8] rounded-sm p-2.5 focus:border-[#e8c547] focus:outline-none"
+                className="w-full bg-[#1C1B18] border border-[#DED5C8]/20 text-xs text-[#F4EFE6] rounded p-2.5 focus:border-[#A95239] focus:outline-none"
               >
                 <option value="casual">Casual</option>
                 <option value="smart_casual">Smart Casual</option>
@@ -503,7 +503,7 @@ export default function ProfilePage() {
             </div>
           </div>
 
-          <div className="flex justify-end pt-4 border-t border-[#9ca3af]/15">
+          <div className="flex justify-end pt-4 border-t border-[#DED5C8]/10">
             <VestraButton
               type="submit"
               variant="primary"

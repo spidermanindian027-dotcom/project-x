@@ -20,8 +20,8 @@ import {
   Mountain,
   Sliders,
 } from 'lucide-react';
-import { VestraButton } from '@/components/ui/vestra-button';
-import { VestraCard } from '@/components/ui/vestra-card';
+import { VaynButton } from '@/components/ui/vestra-button';
+import { VaynCard } from '@/components/ui/vestra-card';
 import { LoadingSpinner } from '@/components/ui/loading-spinner';
 
 interface WardrobeItem {
@@ -166,21 +166,21 @@ export default function StylingPage() {
   return (
     <div className="max-w-6xl mx-auto py-8 px-4 space-y-8">
       {/* Editorial Header */}
-      <div className="border-b border-[#9ca3af]/15 pb-6">
-        <span className="text-[10px] font-semibold tracking-[0.25em] text-[#e8c547] uppercase block mb-1">
-          Contextual Synthesis
+      <div className="border-b border-[#DED5C8]/10 pb-6">
+        <span className="text-[10px] font-semibold tracking-[0.25em] text-[#A95239] uppercase block mb-1 font-mono">
+          VAYN Atmospheric Synthesis
         </span>
-        <h1 className="font-serif text-3xl md:text-4xl font-normal text-[#f5f0e8] tracking-tight">
+        <h1 className="font-serif text-3xl md:text-4xl font-normal text-[#F4EFE6] tracking-tight">
           Location & Occasion Styling
         </h1>
-        <p className="text-xs md:text-sm text-[#9ca3af] mt-1 max-w-2xl">
-          Meteorological and contextual alignment calibrating weather comfort, local dress codes, and wardrobe architecture.
+        <p className="text-xs md:text-sm text-[#6D6961] mt-1 max-w-2xl">
+          Meteorological and contextual alignment calibrating live temperature, event formality, and wardrobe architecture.
         </p>
       </div>
 
       {feedback && (
         <div
-          className={`p-3 text-xs flex items-center gap-2 rounded-sm border ${
+          className={`p-3 text-xs flex items-center gap-2 rounded border ${
             feedback.type === 'success'
               ? 'bg-emerald-950/40 border-emerald-800 text-emerald-200'
               : 'bg-red-950/40 border-red-800 text-red-200'
@@ -196,9 +196,9 @@ export default function StylingPage() {
       )}
 
       {/* Occasions Selector Grid */}
-      <VestraCard variant="bordered" padding="lg" className="space-y-6">
+      <VaynCard variant="bordered" padding="lg" className="space-y-6">
         <div>
-          <span className="text-[10px] font-mono uppercase text-[#e8c547] tracking-wider block mb-3">
+          <span className="text-[10px] font-mono uppercase text-[#A95239] tracking-wider block mb-3 font-semibold">
             1. Select Event Context (12 Calibrated Occasions)
           </span>
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-2.5">
@@ -210,16 +210,16 @@ export default function StylingPage() {
                   key={occ.id}
                   type="button"
                   onClick={() => setSelectedOccasion(occ.id)}
-                  className={`p-3 text-left border rounded-sm transition-all flex flex-col justify-between h-24 ${
+                  className={`p-3 text-left border rounded transition-all flex flex-col justify-between h-24 ${
                     isSelected
-                      ? 'border-[#e8c547] bg-[#e8c547]/10 text-[#f5f0e8] ring-1 ring-[#e8c547]'
-                      : 'border-[#9ca3af]/20 bg-[#262626]/40 text-[#9ca3af] hover:border-white/20'
+                      ? 'border-[#A95239] bg-[#A95239]/15 text-[#F4EFE6] ring-1 ring-[#A95239]'
+                      : 'border-[#DED5C8]/10 bg-[#24231F]/40 text-[#6D6961] hover:border-[#DED5C8]/30 hover:text-[#F4EFE6]'
                   }`}
                 >
-                  <Icon className={`h-4 w-4 ${isSelected ? 'text-[#e8c547]' : 'text-[#9ca3af]'}`} />
+                  <Icon className={`h-4 w-4 ${isSelected ? 'text-[#A95239]' : 'text-[#6D6961]'}`} />
                   <div>
                     <span className="text-xs font-semibold block">{occ.label}</span>
-                    <span className="text-[9px] text-[#9ca3af] block leading-tight line-clamp-1">{occ.desc}</span>
+                    <span className="text-[9px] text-[#6D6961] block leading-tight line-clamp-1">{occ.desc}</span>
                   </div>
                 </button>
               );
@@ -233,29 +233,29 @@ export default function StylingPage() {
                 placeholder="Describe your custom event (e.g. Gallery vernissage in Zurich)..."
                 value={customOccasionText}
                 onChange={(e) => setCustomOccasionText(e.target.value)}
-                className="w-full bg-[#262626] border border-[#9ca3af]/30 rounded-sm p-2 text-xs text-[#f5f0e8] focus:border-[#e8c547] focus:outline-none"
+                className="w-full bg-[#1C1B18] border border-[#DED5C8]/20 rounded p-2.5 text-xs text-[#F4EFE6] focus:border-[#A95239] focus:outline-none"
               />
             </div>
           )}
         </div>
 
         {/* Location & Time Settings Bar */}
-        <div className="pt-4 border-t border-[#9ca3af]/15 grid grid-cols-1 md:grid-cols-3 gap-4 text-xs">
+        <div className="pt-4 border-t border-[#DED5C8]/10 grid grid-cols-1 md:grid-cols-3 gap-4 text-xs">
           {/* City / Location Input */}
           <div className="space-y-1">
-            <label className="text-[#9ca3af] block text-[10px] font-mono uppercase">Metropolitan Center</label>
+            <label className="text-[#6D6961] block text-[10px] font-mono uppercase">Metropolitan Center</label>
             <div className="flex items-center gap-2">
               <input
                 type="text"
-                placeholder="e.g. Paris, Milan, London, Tokyo"
+                placeholder="e.g. Paris, Milan, London, Tokyo, New York"
                 value={cityInput}
                 onChange={(e) => setCityInput(e.target.value)}
-                className="flex-1 bg-[#262626] border border-[#9ca3af]/30 rounded-sm p-2 text-[#f5f0e8] focus:border-[#e8c547] focus:outline-none"
+                className="flex-1 bg-[#1C1B18] border border-[#DED5C8]/20 rounded p-2 text-[#F4EFE6] focus:border-[#A95239] focus:outline-none"
               />
               <button
                 type="button"
                 onClick={handleUseDeviceLocation}
-                className="p-2 bg-[#262626] border border-[#9ca3af]/30 hover:border-[#e8c547] rounded-sm text-[#e8c547]"
+                className="p-2 bg-[#1C1B18] border border-[#DED5C8]/20 hover:border-[#A95239] rounded text-[#A95239] transition-colors"
                 title="Use Device Geolocation"
               >
                 <MapPin className="h-4 w-4" />
@@ -265,17 +265,17 @@ export default function StylingPage() {
 
           {/* Time of Day */}
           <div className="space-y-1">
-            <label className="text-[#9ca3af] block text-[10px] font-mono uppercase">Time of Day</label>
+            <label className="text-[#6D6961] block text-[10px] font-mono uppercase">Time of Day</label>
             <div className="grid grid-cols-4 gap-1">
               {TIMES_OF_DAY.map((t) => (
                 <button
                   key={t}
                   type="button"
                   onClick={() => setTimeOfDay(t)}
-                  className={`p-2 text-center rounded-sm border text-[10px] font-mono transition-colors ${
+                  className={`p-2 text-center rounded border text-[10px] font-mono transition-colors ${
                     timeOfDay === t
-                      ? 'border-[#e8c547] bg-[#e8c547] text-[#1a1a1a] font-bold'
-                      : 'border-[#9ca3af]/20 bg-[#262626]/40 text-[#9ca3af]'
+                      ? 'border-[#A95239] bg-[#A95239] text-[#F4EFE6] font-bold'
+                      : 'border-[#DED5C8]/10 bg-[#24231F]/40 text-[#6D6961] hover:border-[#DED5C8]/30'
                   }`}
                 >
                   {t}
@@ -286,7 +286,7 @@ export default function StylingPage() {
 
           {/* Action Button */}
           <div className="flex items-end">
-            <VestraButton
+            <VaynButton
               variant="primary"
               size="md"
               className="w-full"
@@ -295,40 +295,40 @@ export default function StylingPage() {
               leftIcon={loading ? <LoadingSpinner size="sm" /> : <Compass className="h-4 w-4" />}
             >
               {loading ? 'Synthesizing Climate...' : 'Curate Recommendation'}
-            </VestraButton>
+            </VaynButton>
           </div>
         </div>
-      </VestraCard>
+      </VaynCard>
 
       {/* CURATED RECOMMENDATION SHOWCASE */}
       {recommendation && (
         <div className="space-y-6 pt-2">
           {/* Weather Badge & Title Header */}
-          <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-[#9ca3af]/15 pb-4">
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-[#DED5C8]/10 pb-4">
             <div>
               <div className="flex items-center gap-2 mb-1">
-                <span className="text-[10px] font-mono uppercase tracking-widest text-[#e8c547]">
+                <span className="text-[10px] font-mono uppercase tracking-widest text-[#A95239]">
                   {recommendation.weather.city} • {recommendation.weather.temperatureC}°C {recommendation.weather.condition}
                 </span>
                 {recommendation.weather.isDevelopmentAdapter && (
-                  <span className="text-[9px] font-mono px-2 py-0.5 bg-amber-950/50 text-amber-300 border border-amber-800/50 rounded-sm">
+                  <span className="text-[9px] font-mono px-2 py-0.5 bg-[#A95239]/15 text-[#E9E1D6] border border-[#A95239]/30 rounded">
                     Development Weather Mode
                   </span>
                 )}
               </div>
-              <h2 className="font-serif text-2xl md:text-3xl text-[#f5f0e8]">{recommendation.title}</h2>
-              <p className="text-xs text-[#9ca3af] mt-1">{recommendation.weather.description}</p>
+              <h2 className="font-serif text-2xl md:text-3xl text-[#F4EFE6]">{recommendation.title}</h2>
+              <p className="text-xs text-[#6D6961] mt-1">{recommendation.weather.description}</p>
             </div>
 
-            <VestraButton
+            <VaynButton
               variant="secondary"
               size="sm"
               onClick={handleSaveAsLook}
               disabled={savingLook || isSaved}
-              leftIcon={<Bookmark className={`h-4 w-4 ${isSaved ? 'fill-[#e8c547] text-[#e8c547]' : ''}`} />}
+              leftIcon={<Bookmark className={`h-4 w-4 ${isSaved ? 'fill-[#A95239] text-[#A95239]' : ''}`} />}
             >
               {isSaved ? 'Archived to My Looks' : savingLook ? 'Archiving...' : 'Save as Signature Look'}
-            </VestraButton>
+            </VaynButton>
           </div>
 
           {/* Garment Cards */}
@@ -336,21 +336,21 @@ export default function StylingPage() {
             {recommendation.selectedItems.map((item) => (
               <div
                 key={item.id}
-                className="bg-[#262626]/40 border border-[#9ca3af]/20 rounded-sm overflow-hidden flex flex-col justify-between"
+                className="bg-[#24231F]/60 border border-[#DED5C8]/15 rounded overflow-hidden flex flex-col justify-between hover:border-[#A95239]/40 transition-colors"
               >
                 <div className="relative aspect-[3/4] bg-black">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img src={item.imageUrl} alt={item.name} className="w-full h-full object-cover" />
-                  <span className="absolute top-1.5 left-1.5 text-[8px] font-mono tracking-widest uppercase px-1.5 py-0.5 bg-black/80 text-[#e8c547] rounded-sm">
+                  <span className="absolute top-1.5 left-1.5 text-[8px] font-mono tracking-widest uppercase px-1.5 py-0.5 bg-black/80 text-[#A95239] rounded">
                     {item.category.replace(/_/g, ' ')}
                   </span>
                 </div>
                 <div className="p-2.5 space-y-1">
-                  <h4 className="text-xs font-medium text-[#f5f0e8] truncate">{item.name}</h4>
-                  <div className="flex items-center gap-1.5 text-[10px] text-[#9ca3af] font-mono">
+                  <h4 className="text-xs font-medium text-[#F4EFE6] truncate">{item.name}</h4>
+                  <div className="flex items-center gap-1.5 text-[10px] text-[#6D6961] font-mono">
                     <span
                       className="h-1.5 w-1.5 rounded-full"
-                      style={{ backgroundColor: item.colorHex || '#9ca3af' }}
+                      style={{ backgroundColor: item.colorHex || '#6D6961' }}
                     />
                     <span>{item.dominantColor}</span>
                   </div>
@@ -361,26 +361,26 @@ export default function StylingPage() {
 
           {/* Details & Rationale Breakdown */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            <VestraCard variant="bordered" padding="md">
-              <span className="text-[10px] font-mono uppercase text-[#e8c547] block mb-1">
+            <VaynCard variant="bordered" padding="md">
+              <span className="text-[10px] font-mono uppercase text-[#A95239] block mb-1 font-semibold">
                 Meteorological Rationale
               </span>
-              <p className="text-xs text-[#d4cfc7] leading-relaxed">{recommendation.stylingReason}</p>
-            </VestraCard>
+              <p className="text-xs text-[#E9E1D6] leading-relaxed">{recommendation.stylingReason}</p>
+            </VaynCard>
 
-            <VestraCard variant="bordered" padding="md">
-              <span className="text-[10px] font-mono uppercase text-[#e8c547] block mb-1">
+            <VaynCard variant="bordered" padding="md">
+              <span className="text-[10px] font-mono uppercase text-[#A95239] block mb-1 font-semibold">
                 Footwear Calibration
               </span>
-              <p className="text-xs text-[#d4cfc7] leading-relaxed">{recommendation.footwearSuggestion}</p>
-            </VestraCard>
+              <p className="text-xs text-[#E9E1D6] leading-relaxed">{recommendation.footwearSuggestion}</p>
+            </VaynCard>
 
-            <VestraCard variant="bordered" padding="md">
-              <span className="text-[10px] font-mono uppercase text-[#e8c547] block mb-1">
+            <VaynCard variant="bordered" padding="md">
+              <span className="text-[10px] font-mono uppercase text-[#A95239] block mb-1 font-semibold">
                 Accessories & Accents
               </span>
-              <p className="text-xs text-[#d4cfc7] leading-relaxed">{recommendation.accessoriesSuggestion}</p>
-            </VestraCard>
+              <p className="text-xs text-[#E9E1D6] leading-relaxed">{recommendation.accessoriesSuggestion}</p>
+            </VaynCard>
           </div>
         </div>
       )}

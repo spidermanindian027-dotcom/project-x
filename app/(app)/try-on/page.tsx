@@ -10,8 +10,8 @@ import {
   Info,
   History,
 } from 'lucide-react';
-import { VestraButton } from '@/components/ui/vestra-button';
-import { VestraCard } from '@/components/ui/vestra-card';
+import { VaynButton } from '@/components/ui/vestra-button';
+import { VaynCard } from '@/components/ui/vestra-card';
 import { LoadingSpinner } from '@/components/ui/loading-spinner';
 
 interface WardrobeItem {
@@ -202,21 +202,21 @@ export default function TryOnPage() {
   return (
     <div className="max-w-6xl mx-auto py-8 px-4 space-y-8">
       {/* Editorial Header */}
-      <div className="border-b border-[#9ca3af]/15 pb-6">
-        <span className="text-[10px] font-semibold tracking-[0.25em] text-[#e8c547] uppercase block mb-1">
-          Neural Fitting Studio
+      <div className="border-b border-[#DED5C8]/10 pb-6">
+        <span className="text-[10px] font-semibold tracking-[0.25em] text-[#A95239] uppercase block mb-1 font-mono">
+          VAYN Neural Fitting Studio
         </span>
-        <h1 className="font-serif text-3xl md:text-4xl font-normal text-[#f5f0e8] tracking-tight">
+        <h1 className="font-serif text-3xl md:text-4xl font-normal text-[#F4EFE6] tracking-tight">
           Virtual Try-On Studio
         </h1>
-        <p className="text-xs md:text-sm text-[#9ca3af] mt-1 max-w-2xl">
+        <p className="text-xs md:text-sm text-[#6D6961] mt-1 max-w-2xl">
           Photorealistic neural drape simulation mapping your archived wardrobe pieces onto your reference silhouette.
         </p>
       </div>
 
       {feedback && (
         <div
-          className={`p-3 text-xs flex items-center gap-2 rounded-sm border ${
+          className={`p-3 text-xs flex items-center gap-2 rounded border ${
             feedback.type === 'success'
               ? 'bg-emerald-950/40 border-emerald-800 text-emerald-200'
               : 'bg-red-950/40 border-red-800 text-red-200'
@@ -234,16 +234,16 @@ export default function TryOnPage() {
       {/* Main Studio Workspace Grid */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         {/* Left Col: Reference Photo Card */}
-        <VestraCard variant="bordered" padding="md" className="space-y-4">
-          <div className="border-b border-[#9ca3af]/15 pb-2.5 flex items-center justify-between">
+        <VaynCard variant="bordered" padding="md" className="space-y-4">
+          <div className="border-b border-[#DED5C8]/10 pb-2.5 flex items-center justify-between">
             <div>
-              <span className="text-[10px] font-mono uppercase text-[#e8c547] block">Base Silhouette</span>
-              <h3 className="font-serif text-base text-[#f5f0e8]">Reference Portrait</h3>
+              <span className="text-[10px] font-mono uppercase text-[#A95239] block font-semibold">Base Silhouette</span>
+              <h3 className="font-serif text-base text-[#F4EFE6]">Reference Portrait</h3>
             </div>
             <button
               type="button"
               onClick={() => fileInputRef.current?.click()}
-              className="text-[10px] font-mono text-[#e8c547] hover:underline"
+              className="text-[10px] font-mono text-[#A95239] hover:underline"
             >
               Replace Photo
             </button>
@@ -257,33 +257,33 @@ export default function TryOnPage() {
           </div>
 
           {referencePhoto ? (
-            <div className="relative aspect-[3/4] bg-black rounded-sm overflow-hidden border border-[#9ca3af]/20 flex items-center justify-center">
+            <div className="relative aspect-[3/4] bg-black rounded overflow-hidden border border-[#DED5C8]/15 flex items-center justify-center">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img src={referencePhoto} alt="Reference Silhouette" className="w-full h-full object-cover" />
             </div>
           ) : (
             <div
               onClick={() => fileInputRef.current?.click()}
-              className="aspect-[3/4] border-2 border-dashed border-[#9ca3af]/30 rounded-sm flex flex-col items-center justify-center p-6 text-center cursor-pointer hover:border-[#e8c547] bg-[#262626]/30"
+              className="aspect-[3/4] border-2 border-dashed border-[#DED5C8]/20 rounded flex flex-col items-center justify-center p-6 text-center cursor-pointer hover:border-[#A95239] bg-[#24231F]/30 transition-colors"
             >
-              <Camera className="h-8 w-8 text-[#9ca3af] mb-2" />
-              <span className="text-xs font-semibold text-[#f5f0e8]">Upload Reference Photo</span>
-              <span className="text-[10px] text-[#9ca3af] mt-1">Full-body portrait in standing pose</span>
+              <Camera className="h-8 w-8 text-[#6D6961] mb-2" />
+              <span className="text-xs font-semibold text-[#F4EFE6]">Upload Reference Photo</span>
+              <span className="text-[10px] text-[#6D6961] mt-1">Full-body portrait in standing pose</span>
             </div>
           )}
 
-          <p className="text-[10px] text-[#9ca3af] leading-relaxed">
-            Your encrypted portrait anchors shoulder width, torso verticality, and stance parameters.
+          <p className="text-[10px] text-[#6D6961] leading-relaxed">
+            Your encrypted portrait anchors shoulder width, torso verticality, and silhouette stance parameters.
           </p>
-        </VestraCard>
+        </VaynCard>
 
         {/* Right 2 Cols: Garment Selector & Studio Action */}
-        <VestraCard variant="bordered" padding="md" className="md:col-span-2 space-y-5 flex flex-col justify-between">
+        <VaynCard variant="bordered" padding="md" className="md:col-span-2 space-y-5 flex flex-col justify-between">
           <div className="space-y-4">
-            <div className="border-b border-[#9ca3af]/15 pb-2.5 flex items-center justify-between">
+            <div className="border-b border-[#DED5C8]/10 pb-2.5 flex items-center justify-between">
               <div>
-                <span className="text-[10px] font-mono uppercase text-[#e8c547] block">Select Garments</span>
-                <h3 className="font-serif text-base text-[#f5f0e8]">
+                <span className="text-[10px] font-mono uppercase text-[#A95239] block font-semibold">Select Garments</span>
+                <h3 className="font-serif text-base text-[#F4EFE6]">
                   Garment Palette ({selectedItemIds.length}/4 Selected)
                 </h3>
               </div>
@@ -295,10 +295,10 @@ export default function TryOnPage() {
                     key={cat}
                     type="button"
                     onClick={() => setActiveCategory(cat)}
-                    className={`px-2 py-1 rounded-sm border transition-colors ${
+                    className={`px-2 py-1 rounded border transition-colors ${
                       activeCategory === cat
-                        ? 'border-[#e8c547] bg-[#e8c547] text-[#1a1a1a] font-bold'
-                        : 'border-[#9ca3af]/20 bg-[#262626]/40 text-[#9ca3af]'
+                        ? 'border-[#A95239] bg-[#A95239] text-[#F4EFE6] font-bold'
+                        : 'border-[#DED5C8]/10 bg-[#24231F]/40 text-[#6D6961] hover:border-[#DED5C8]/30'
                     }`}
                   >
                     {cat}
@@ -309,7 +309,7 @@ export default function TryOnPage() {
 
             {/* Garments Grid */}
             {categoryItems.length === 0 ? (
-              <div className="py-12 text-center text-xs text-[#9ca3af]">
+              <div className="py-12 text-center text-xs text-[#6D6961]">
                 No pieces found under {activeCategory.toLowerCase()}. Catalog garments in your vault to try them on.
               </div>
             ) : (
@@ -320,24 +320,24 @@ export default function TryOnPage() {
                     <div
                       key={item.id}
                       onClick={() => toggleSelectItem(item.id)}
-                      className={`cursor-pointer rounded-sm border transition-all overflow-hidden relative ${
+                      className={`cursor-pointer rounded border transition-all overflow-hidden relative ${
                         isSelected
-                          ? 'border-[#e8c547] ring-1 ring-[#e8c547] bg-[#e8c547]/10'
-                          : 'border-[#9ca3af]/20 bg-[#262626]/30 hover:border-white/20'
+                          ? 'border-[#A95239] ring-1 ring-[#A95239] bg-[#A95239]/10'
+                          : 'border-[#DED5C8]/15 bg-[#24231F]/30 hover:border-[#DED5C8]/40'
                       }`}
                     >
                       <div className="aspect-[3/4] bg-black relative">
                         {/* eslint-disable-next-line @next/next/no-img-element */}
                         <img src={item.imageUrl} alt={item.name} className="w-full h-full object-cover" />
                         {isSelected && (
-                          <div className="absolute top-1.5 right-1.5 h-4 w-4 rounded-full bg-[#e8c547] text-[#1a1a1a] flex items-center justify-center font-bold text-[10px]">
+                          <div className="absolute top-1.5 right-1.5 h-4 w-4 rounded-full bg-[#A95239] text-[#F4EFE6] flex items-center justify-center font-bold text-[10px]">
                             ✓
                           </div>
                         )}
                       </div>
                       <div className="p-1.5 truncate">
-                        <span className="text-[11px] font-medium text-[#f5f0e8] block truncate">{item.name}</span>
-                        <span className="text-[9px] text-[#9ca3af] font-mono block">{item.dominantColor}</span>
+                        <span className="text-[11px] font-medium text-[#F4EFE6] block truncate">{item.name}</span>
+                        <span className="text-[9px] text-[#6D6961] font-mono block">{item.dominantColor}</span>
                       </div>
                     </div>
                   );
@@ -346,12 +346,12 @@ export default function TryOnPage() {
             )}
           </div>
 
-          <div className="pt-4 border-t border-[#9ca3af]/15 flex items-center justify-between">
-            <span className="text-[10px] text-[#9ca3af] font-mono">
+          <div className="pt-4 border-t border-[#DED5C8]/10 flex items-center justify-between">
+            <span className="text-[10px] text-[#6D6961] font-mono">
               Maximum 4 garments per neural pass
             </span>
 
-            <VestraButton
+            <VaynButton
               variant="primary"
               size="md"
               onClick={handleGenerateTryOn}
@@ -359,47 +359,47 @@ export default function TryOnPage() {
               leftIcon={isProcessing ? <LoadingSpinner size="sm" /> : <Sparkles className="h-4 w-4" />}
             >
               {isProcessing ? 'Simulating Neural Fit...' : 'Generate Virtual Try-On'}
-            </VestraButton>
+            </VaynButton>
           </div>
-        </VestraCard>
+        </VaynCard>
       </div>
 
       {/* RESULTS SHOWCASE (ACTIVE JOB) */}
       {activeJob && (
         <div className="space-y-6 pt-4">
-          <div className="p-3.5 bg-amber-950/40 border border-amber-600/40 text-amber-200 text-xs rounded-sm flex items-start gap-2.5">
-            <Info className="h-4 w-4 shrink-0 text-amber-400 mt-0.5" />
+          <div className="p-3.5 bg-[#A95239]/10 border border-[#A95239]/30 text-[#E9E1D6] text-xs rounded flex items-start gap-2.5">
+            <Info className="h-4 w-4 shrink-0 text-[#A95239] mt-0.5" />
             <p className="leading-relaxed">
-              Development Preview: Virtual Try-On simulation active. Previews are artistic conceptual estimations and do not guarantee exact fabric drape, physical fit, or precise identity preservation.
+              VAYN Diffusion Preview: Neural Try-On simulation active. Previews are artistic conceptual estimations and do not guarantee exact fabric drape, physical fit, or precise identity preservation.
             </p>
           </div>
 
-          <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-[#9ca3af]/15 pb-4">
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-[#DED5C8]/10 pb-4">
             <div>
-              <span className="text-[10px] font-semibold tracking-[0.25em] text-[#e8c547] uppercase block mb-1">
+              <span className="text-[10px] font-semibold tracking-[0.25em] text-[#A95239] uppercase block mb-1 font-mono">
                 Synthesized Look
               </span>
-              <h2 className="font-serif text-2xl md:text-3xl text-[#f5f0e8]">
+              <h2 className="font-serif text-2xl md:text-3xl text-[#F4EFE6]">
                 Neural Try-On Composite
               </h2>
             </div>
 
-            <VestraButton
+            <VaynButton
               variant="secondary"
               size="sm"
               onClick={handleSaveToLooks}
               disabled={savingLook || isSavedAsLook}
-              leftIcon={<Bookmark className={`h-4 w-4 ${isSavedAsLook ? 'fill-[#e8c547] text-[#e8c547]' : ''}`} />}
+              leftIcon={<Bookmark className={`h-4 w-4 ${isSavedAsLook ? 'fill-[#A95239] text-[#A95239]' : ''}`} />}
             >
               {isSavedAsLook ? 'Archived to My Looks' : savingLook ? 'Archiving...' : 'Save as Signature Look'}
-            </VestraButton>
+            </VaynButton>
           </div>
 
           {/* Before & After Comparison */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
-            <VestraCard variant="bordered" padding="md" className="space-y-2 text-center">
-              <span className="text-[10px] font-mono uppercase text-[#9ca3af] block">1. Reference Silhouette</span>
-              <div className="aspect-[3/4] bg-black rounded-sm overflow-hidden border border-[#9ca3af]/20">
+            <VaynCard variant="bordered" padding="md" className="space-y-2 text-center">
+              <span className="text-[10px] font-mono uppercase text-[#6D6961] block">1. Reference Silhouette</span>
+              <div className="aspect-[3/4] bg-black rounded overflow-hidden border border-[#DED5C8]/15">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   src={activeJob.referenceImageUrl}
@@ -407,35 +407,35 @@ export default function TryOnPage() {
                   className="w-full h-full object-cover"
                 />
               </div>
-            </VestraCard>
+            </VaynCard>
 
-            <VestraCard variant="bordered" padding="md" className="space-y-2 text-center">
-              <span className="text-[10px] font-mono uppercase text-[#e8c547] block">2. Synthesized Look</span>
-              <div className="aspect-[3/4] bg-black rounded-sm overflow-hidden border border-[#e8c547]/40 relative">
+            <VaynCard variant="bordered" padding="md" className="space-y-2 text-center">
+              <span className="text-[10px] font-mono uppercase text-[#A95239] block font-semibold">2. Synthesized Look</span>
+              <div className="aspect-[3/4] bg-black rounded overflow-hidden border border-[#A95239]/40 relative">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   src={activeJob.resultImageUrl || activeJob.referenceImageUrl}
                   alt="Synthesized Fit"
                   className="w-full h-full object-cover"
                 />
-                <span className="absolute bottom-2 right-2 text-[9px] font-mono bg-black/80 px-2 py-0.5 rounded-sm text-[#e8c547]">
-                  VESTRA VTON PREVIEW
+                <span className="absolute bottom-2 right-2 text-[9px] font-mono bg-black/85 px-2 py-0.5 rounded text-[#A95239]">
+                  VAYN VTON DIFFUSION
                 </span>
               </div>
-            </VestraCard>
+            </VaynCard>
           </div>
         </div>
       )}
 
       {/* HISTORICAL TRY-ON GALLERY SHELF */}
-      <div className="pt-6 border-t border-[#9ca3af]/15 space-y-4">
+      <div className="pt-6 border-t border-[#DED5C8]/10 space-y-4">
         <div className="flex items-center gap-2">
-          <History className="h-4 w-4 text-[#e8c547]" />
-          <h3 className="font-serif text-lg text-[#f5f0e8]">Try-On Session Archive ({historyJobs.length})</h3>
+          <History className="h-4 w-4 text-[#A95239]" />
+          <h3 className="font-serif text-lg text-[#F4EFE6]">Try-On Session Archive ({historyJobs.length})</h3>
         </div>
 
         {historyJobs.length === 0 ? (
-          <div className="text-xs text-[#9ca3af] py-6 text-center">
+          <div className="text-xs text-[#6D6961] py-6 text-center">
             No previous virtual try-on sessions recorded.
           </div>
         ) : (
@@ -444,7 +444,7 @@ export default function TryOnPage() {
               <div
                 key={job.id}
                 onClick={() => setActiveJob(job)}
-                className="cursor-pointer bg-[#262626]/40 border border-[#9ca3af]/20 hover:border-[#e8c547] rounded-sm overflow-hidden transition-all"
+                className="cursor-pointer bg-[#24231F]/40 border border-[#DED5C8]/15 hover:border-[#A95239] rounded overflow-hidden transition-all"
               >
                 <div className="aspect-[3/4] bg-black">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -454,7 +454,7 @@ export default function TryOnPage() {
                     className="w-full h-full object-cover"
                   />
                 </div>
-                <div className="p-2 text-[9px] font-mono text-[#9ca3af] truncate">
+                <div className="p-2 text-[9px] font-mono text-[#6D6961] truncate">
                   {new Date(job.createdAt).toLocaleDateString()}
                 </div>
               </div>

@@ -204,28 +204,28 @@ export default function StylistChatPage() {
   return (
     <div className="max-w-6xl mx-auto py-8 px-4 space-y-6">
       {/* Editorial Header */}
-      <div className="border-b border-[#9ca3af]/15 pb-4 flex flex-col md:flex-row md:items-end justify-between gap-4">
+      <div className="border-b border-[#DED5C8]/10 pb-4 flex flex-col md:flex-row md:items-end justify-between gap-4">
         <div>
-          <span className="text-[10px] font-semibold tracking-[0.25em] text-[#e8c547] uppercase block mb-1">
-            Personal Concierge
+          <span className="text-[10px] font-semibold tracking-[0.25em] text-[#A95239] uppercase block mb-1 font-mono">
+            Personal AI Concierge
           </span>
-          <h1 className="font-serif text-3xl md:text-4xl font-normal text-[#f5f0e8] tracking-tight">
-            Ask VESTRA Stylist
+          <h1 className="font-serif text-3xl md:text-4xl font-normal text-[#F4EFE6] tracking-tight">
+            Ask VAYN Stylist
           </h1>
-          <p className="text-xs text-[#9ca3af] mt-1">
-            Private couture advisory analyzing proportion, color theory, and your cataloged inventory.
+          <p className="text-xs text-[#6D6961] mt-1">
+            Private style advisory analyzing proportion, color theory, and your cataloged wardrobe.
           </p>
         </div>
 
         <div className="flex items-center gap-2">
-          <span className="text-[10px] font-mono uppercase tracking-wider px-2.5 py-1 bg-[#e8c547]/10 text-[#e8c547] border border-[#e8c547]/30 rounded-sm">
+          <span className="text-[10px] font-mono uppercase tracking-wider px-2.5 py-1 bg-[#A95239]/10 text-[#A95239] border border-[#A95239]/30 rounded">
             Context: {userItems.length} Garments • {profileArchetype}
           </span>
         </div>
       </div>
 
       {feedback && (
-        <div className="p-3 text-xs bg-red-950/40 border border-red-800 text-red-200 flex items-center gap-2 rounded-sm">
+        <div className="p-3 text-xs bg-red-950/40 border border-red-800 text-red-200 flex items-center gap-2 rounded">
           <AlertCircle className="h-4 w-4 shrink-0 text-red-400" />
           <span>{feedback}</span>
         </div>
@@ -234,16 +234,16 @@ export default function StylistChatPage() {
       {/* Main Chat Grid (Sidebar Sessions + Chat View) */}
       <div className="grid grid-cols-1 md:grid-cols-4 gap-6 min-h-[580px]">
         {/* Sessions Sidebar */}
-        <VestraCard variant="bordered" padding="md" className="md:col-span-1 flex flex-col justify-between space-y-4">
+        <VestraCard variant="bordered" padding="md" className="md:col-span-1 flex flex-col justify-between space-y-4 border-[#DED5C8]/15 bg-[#24231F]">
           <div className="space-y-3">
-            <div className="flex items-center justify-between pb-2 border-b border-[#9ca3af]/15">
-              <span className="text-[10px] font-mono uppercase text-[#e8c547] tracking-wider">
+            <div className="flex items-center justify-between pb-2 border-b border-[#DED5C8]/10">
+              <span className="text-[10px] font-mono uppercase text-[#A95239] tracking-wider font-semibold">
                 Consultations
               </span>
               <button
                 type="button"
                 onClick={handleCreateNewSession}
-                className="p-1 text-[#9ca3af] hover:text-[#f5f0e8] transition-colors"
+                className="p-1 text-[#6D6961] hover:text-[#F4EFE6] transition-colors"
                 title="New Consultation"
               >
                 <Plus className="h-4 w-4" />
@@ -256,15 +256,15 @@ export default function StylistChatPage() {
                   key={sess.id}
                   type="button"
                   onClick={() => setActiveSessionId(sess.id)}
-                  className={`w-full text-left p-2.5 rounded-sm border transition-all text-xs flex items-center justify-between ${
+                  className={`w-full text-left p-2.5 rounded border transition-all text-xs flex items-center justify-between ${
                     activeSessionId === sess.id
-                      ? 'border-[#e8c547] bg-[#e8c547]/10 text-[#f5f0e8]'
-                      : 'border-transparent text-[#9ca3af] hover:bg-white/5 hover:text-[#f5f0e8]'
+                      ? 'border-[#A95239] bg-[#A95239]/12 text-[#F4EFE6]'
+                      : 'border-transparent text-[#6D6961] hover:bg-white/5 hover:text-[#F4EFE6]'
                   }`}
                 >
                   <div className="truncate mr-2">
                     <span className="block truncate font-medium">{sess.title}</span>
-                    <span className="text-[10px] text-[#9ca3af] font-mono block">
+                    <span className="text-[10px] text-[#6D6961] font-mono block">
                       {new Date(sess.updatedAt).toLocaleDateString()}
                     </span>
                   </div>
@@ -274,23 +274,23 @@ export default function StylistChatPage() {
             </div>
           </div>
 
-          <div className="pt-3 border-t border-[#9ca3af]/10 text-[10px] text-[#9ca3af] font-mono">
-            Encrypted End-to-End
+          <div className="pt-3 border-t border-[#DED5C8]/10 text-[10px] text-[#6D6961] font-mono">
+            VAYN Encrypted Advisory
           </div>
         </VestraCard>
 
         {/* Active Conversation Window */}
-        <VestraCard variant="bordered" padding="md" className="md:col-span-3 flex flex-col justify-between h-[600px]">
+        <VestraCard variant="bordered" padding="md" className="md:col-span-3 flex flex-col justify-between h-[600px] border-[#DED5C8]/15 bg-[#24231F]">
           {/* Scrollable Messages Area */}
           <div className="flex-1 overflow-y-auto pr-2 space-y-4">
             {/* System Intro Card */}
-            <div className="p-3.5 bg-[#262626]/50 border border-[#e8c547]/30 rounded-sm flex items-start gap-3">
-              <Bot className="h-5 w-5 text-[#e8c547] shrink-0 mt-0.5" />
+            <div className="p-3.5 bg-[#1C1B18] border border-[#A95239]/30 rounded flex items-start gap-3">
+              <Bot className="h-5 w-5 text-[#A95239] shrink-0 mt-0.5" />
               <div className="text-xs space-y-1">
-                <span className="font-semibold text-[#f5f0e8] uppercase tracking-wider block text-[10px]">
-                  VESTRA Atelier Stylist Active
+                <span className="font-semibold text-[#F4EFE6] uppercase tracking-wider block text-[10px] font-mono">
+                  VAYN Stylist Active
                 </span>
-                <p className="text-[#9ca3af] leading-relaxed">
+                <p className="text-[#6D6961] leading-relaxed">
                   Calibrated to your {profileArchetype} compass with access to your {userItems.length} cataloged wardrobe pieces. Inquire about color pairings, proportion balancing, or occasion dressing.
                 </p>
               </div>
@@ -311,16 +311,16 @@ export default function StylistChatPage() {
                     className={`flex gap-3 ${isUser ? 'justify-end' : 'justify-start'}`}
                   >
                     {!isUser && (
-                      <div className="h-7 w-7 rounded-full bg-[#1a1a1a] border border-[#e8c547]/40 flex items-center justify-center shrink-0 text-[#e8c547]">
+                      <div className="h-7 w-7 rounded-full bg-[#1C1B18] border border-[#A95239]/40 flex items-center justify-center shrink-0 text-[#A95239]">
                         <Bot className="h-4 w-4" />
                       </div>
                     )}
 
                     <div
-                      className={`max-w-[85%] rounded-sm p-3.5 space-y-2 text-xs leading-relaxed ${
+                      className={`max-w-[85%] rounded p-3.5 space-y-2 text-xs leading-relaxed ${
                         isUser
-                          ? 'bg-[#e8c547]/15 border border-[#e8c547]/40 text-[#f5f0e8]'
-                          : 'bg-[#262626]/70 border border-[#9ca3af]/20 text-[#d4cfc7]'
+                          ? 'bg-[#A95239]/15 border border-[#A95239]/40 text-[#F4EFE6]'
+                          : 'bg-[#24231F] border border-[#DED5C8]/15 text-[#E9E1D6]'
                       }`}
                     >
                       <p className="whitespace-pre-wrap">{msg.content}</p>
@@ -328,26 +328,26 @@ export default function StylistChatPage() {
                       {/* Referenced Wardrobe Item Chips */}
                       {!isUser && referenced.length > 0 && (
                         <div className="pt-2 border-t border-white/5 space-y-1.5">
-                          <span className="text-[10px] text-[#e8c547] font-mono uppercase tracking-wider block">
+                          <span className="text-[10px] text-[#A95239] font-mono uppercase tracking-wider block">
                             Referenced Wardrobe Pieces:
                           </span>
                           <div className="flex flex-wrap gap-2">
                             {referenced.map((it) => (
                               <div
                                 key={it.id}
-                                className="flex items-center gap-2 p-1.5 bg-black/50 border border-white/10 rounded-sm"
+                                className="flex items-center gap-2 p-1.5 bg-black/50 border border-[#DED5C8]/10 rounded"
                               >
                                 {/* eslint-disable-next-line @next/next/no-img-element */}
                                 <img
                                   src={it.imageUrl}
                                   alt={it.name}
-                                  className="h-7 w-7 object-cover rounded-sm"
+                                  className="h-7 w-7 object-cover rounded"
                                 />
                                 <div className="text-[10px]">
-                                  <span className="text-[#f5f0e8] font-medium block truncate max-w-[120px]">
+                                  <span className="text-[#F4EFE6] font-medium block truncate max-w-[120px]">
                                     {it.name}
                                   </span>
-                                  <span className="text-[#9ca3af] font-mono block">
+                                  <span className="text-[#6D6961] font-mono block">
                                     {it.dominantColor}
                                   </span>
                                 </div>
@@ -359,7 +359,7 @@ export default function StylistChatPage() {
                     </div>
 
                     {isUser && (
-                      <div className="h-7 w-7 rounded-full bg-[#262626] border border-[#9ca3af]/30 flex items-center justify-center shrink-0 text-[#9ca3af]">
+                      <div className="h-7 w-7 rounded-full bg-[#24231F] border border-[#DED5C8]/20 flex items-center justify-center shrink-0 text-[#6D6961]">
                         <User className="h-4 w-4" />
                       </div>
                     )}
@@ -369,10 +369,10 @@ export default function StylistChatPage() {
             )}
 
             {isSending && (
-              <div className="flex items-center gap-3 text-xs text-[#9ca3af] font-mono py-2">
-                <Bot className="h-4 w-4 text-[#e8c547] animate-pulse" />
+              <div className="flex items-center gap-3 text-xs text-[#6D6961] font-mono py-2">
+                <Bot className="h-4 w-4 text-[#A95239] animate-pulse" />
                 <span className="flex items-center gap-2">
-                  <LoadingSpinner size="sm" /> Atelier Stylist is analyzing tailoring vectors...
+                  <LoadingSpinner size="sm" /> VAYN Stylist is analyzing tailoring vectors...
                 </span>
               </div>
             )}
@@ -381,7 +381,7 @@ export default function StylistChatPage() {
           </div>
 
           {/* Quick Consultation Chips & Message Input */}
-          <div className="pt-3 border-t border-[#9ca3af]/15 space-y-3">
+          <div className="pt-3 border-t border-[#DED5C8]/10 space-y-3">
             {/* Quick Prompts */}
             <div className="flex items-center gap-1.5 overflow-x-auto pb-1 scrollbar-none">
               {QUICK_PROMPTS.map((prompt) => (
@@ -389,7 +389,7 @@ export default function StylistChatPage() {
                   key={prompt}
                   type="button"
                   onClick={() => handleSendMessage(prompt)}
-                  className="px-2.5 py-1 text-[10px] font-mono rounded-sm border border-[#9ca3af]/25 bg-[#262626]/40 text-[#9ca3af] hover:text-[#e8c547] hover:border-[#e8c547]/40 shrink-0 transition-colors"
+                  className="px-2.5 py-1 text-[10px] font-mono rounded border border-[#DED5C8]/15 bg-[#24231F] text-[#6D6961] hover:text-[#A95239] hover:border-[#A95239]/40 shrink-0 transition-colors"
                 >
                   {prompt}
                 </button>
@@ -410,7 +410,7 @@ export default function StylistChatPage() {
                 value={inputMessage}
                 onChange={(e) => setInputMessage(e.target.value)}
                 disabled={isSending}
-                className="flex-1 bg-[#262626] border border-[#9ca3af]/30 rounded-sm px-3 py-2 text-xs text-[#f5f0e8] placeholder-[#9ca3af]/50 focus:border-[#e8c547] focus:outline-none"
+                className="flex-1 bg-[#1C1B18] border border-[#DED5C8]/20 rounded px-3 py-2 text-xs text-[#F4EFE6] placeholder-[#6D6961]/60 focus:border-[#A95239] focus:outline-none"
               />
               <VestraButton
                 type="submit"

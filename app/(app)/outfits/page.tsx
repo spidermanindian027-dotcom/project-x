@@ -174,21 +174,21 @@ export default function OutfitsPage() {
   return (
     <div className="max-w-6xl mx-auto py-8 px-4 space-y-10">
       {/* Editorial Header */}
-      <div className="border-b border-[#9ca3af]/15 pb-6">
-        <span className="text-[10px] font-semibold tracking-[0.25em] text-[#e8c547] uppercase block mb-1">
-          Algorithmic Curation
+      <div className="border-b border-[#DED5C8]/10 pb-6">
+        <span className="text-[10px] font-semibold tracking-[0.25em] text-[#A95239] uppercase block mb-1 font-mono">
+          VAYN Algorithmic Curation
         </span>
-        <h1 className="font-serif text-3xl md:text-4xl font-normal text-[#f5f0e8] tracking-tight">
+        <h1 className="font-serif text-3xl md:text-4xl font-normal text-[#F4EFE6] tracking-tight">
           AI Wardrobe Matching Atelier
         </h1>
-        <p className="text-xs md:text-sm text-[#9ca3af] mt-1 max-w-2xl">
+        <p className="text-xs md:text-sm text-[#6D6961] mt-1 max-w-2xl">
           Pairing your digitized archive pieces using color theory, silhouette proportion rules, and occasion context.
         </p>
       </div>
 
       {feedback && (
         <div
-          className={`p-3 text-xs flex items-center gap-2 rounded-sm border ${
+          className={`p-3 text-xs flex items-center gap-2 rounded border ${
             feedback.type === 'success'
               ? 'bg-emerald-950/40 border-emerald-800 text-emerald-200'
               : 'bg-red-950/40 border-red-800 text-red-200'
@@ -204,9 +204,9 @@ export default function OutfitsPage() {
       )}
 
       {/* Synthesis Configuration Grid */}
-      <VestraCard variant="bordered" padding="lg" className="space-y-6">
+      <VestraCard variant="bordered" padding="lg" className="space-y-6 border-[#DED5C8]/15 bg-[#24231F]">
         <div>
-          <span className="text-[10px] font-mono uppercase text-[#e8c547] tracking-wider block mb-2">
+          <span className="text-[10px] font-mono uppercase text-[#A95239] tracking-wider block mb-2 font-semibold">
             1. Select Occasion Calibration
           </span>
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-2.5">
@@ -215,27 +215,27 @@ export default function OutfitsPage() {
                 key={occ.id}
                 type="button"
                 onClick={() => setSelectedOccasion(occ.id)}
-                className={`p-3 text-left border rounded-sm transition-all ${
+                className={`p-3 text-left border rounded transition-all ${
                   selectedOccasion === occ.id
-                    ? 'border-[#e8c547] bg-[#e8c547]/10 text-[#f5f0e8] ring-1 ring-[#e8c547]'
-                    : 'border-[#9ca3af]/20 bg-[#262626]/40 text-[#9ca3af] hover:border-white/20'
+                    ? 'border-[#A95239] bg-[#A95239]/12 text-[#F4EFE6] ring-1 ring-[#A95239]'
+                    : 'border-[#DED5C8]/15 bg-[#1C1B18] text-[#6D6961] hover:border-[#A95239]/40'
                 }`}
               >
                 <span className="text-xs font-semibold block">{occ.label}</span>
-                <span className="text-[10px] text-[#9ca3af] block mt-0.5 leading-tight">{occ.desc}</span>
+                <span className="text-[10px] text-[#6D6961] block mt-0.5 leading-tight">{occ.desc}</span>
               </button>
             ))}
           </div>
         </div>
 
-        <div className="flex flex-col sm:flex-row items-center justify-between gap-4 pt-4 border-t border-[#9ca3af]/15">
-          <div className="flex items-center gap-2 text-xs text-[#9ca3af]">
-            <CloudSun className="h-4 w-4 text-[#e8c547]" />
-            <span>Season Filter:</span>
+        <div className="flex flex-col sm:flex-row items-center justify-between gap-4 pt-4 border-t border-[#DED5C8]/10">
+          <div className="flex items-center gap-2 text-xs text-[#6D6961]">
+            <CloudSun className="h-4 w-4 text-[#A95239]" />
+            <span className="font-mono">Season Filter:</span>
             <select
               value={seasonNote}
               onChange={(e) => setSeasonNote(e.target.value)}
-              className="bg-[#262626] border border-[#9ca3af]/30 text-xs text-[#f5f0e8] rounded-sm p-1.5 focus:border-[#e8c547] focus:outline-none"
+              className="bg-[#1C1B18] border border-[#DED5C8]/20 text-xs text-[#F4EFE6] rounded p-1.5 focus:border-[#A95239] focus:outline-none"
             >
               <option value="All Season">All Seasons</option>
               <option value="Spring / Summer">Spring / Summer</option>

@@ -3,13 +3,14 @@ import { cva, type VariantProps } from 'class-variance-authority';
 import { cn } from '@/lib/utils';
 
 export const cardVariants = cva(
-  'rounded-sm transition-all duration-200 text-[#f5f0e8]',
+  'rounded-sm transition-all duration-200 text-[#F4EFE6]',
   {
     variants: {
       variant: {
-        default: 'bg-[#262626] border border-[#9ca3af]/15',
-        bordered: 'bg-[#1a1a1a] border border-[#9ca3af]/30 hover:border-[#e8c547]/50',
-        elevated: 'bg-[#262626] border border-[#9ca3af]/20 shadow-xl shadow-black/40',
+        default: 'bg-[#24231F] border border-[#DED5C8]/15',
+        bordered: 'bg-[#1C1B18] border border-[#DED5C8]/25 hover:border-[#A95239]/60',
+        elevated: 'bg-[#24231F] border border-[#DED5C8]/20 shadow-xl shadow-black/40',
+        light: 'bg-[#F8F4ED] text-[#24231F] border border-[#DED5C8] shadow-sm',
       },
       padding: {
         none: 'p-0',
@@ -49,7 +50,7 @@ export const VestraCardHeader = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <div
     ref={ref}
-    className={cn('flex flex-col space-y-1.5 pb-4 border-b border-[#9ca3af]/15', className)}
+    className={cn('flex flex-col space-y-1.5 pb-4 border-b border-[#DED5C8]/15', className)}
     {...props}
   />
 ));
@@ -61,7 +62,7 @@ export const VestraCardTitle = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <h3
     ref={ref}
-    className={cn('font-serif text-lg font-semibold tracking-wide text-[#f5f0e8]', className)}
+    className={cn('font-serif text-lg font-semibold tracking-wide text-[#F4EFE6]', className)}
     {...props}
   />
 ));
@@ -73,7 +74,7 @@ export const VestraCardDescription = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <p
     ref={ref}
-    className={cn('text-xs text-[#9ca3af] leading-relaxed', className)}
+    className={cn('text-xs text-[#E9E1D6]/70 leading-relaxed font-sans', className)}
     {...props}
   />
 ));
@@ -93,8 +94,16 @@ export const VestraCardFooter = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <div
     ref={ref}
-    className={cn('flex items-center pt-4 border-t border-[#9ca3af]/15 mt-4', className)}
+    className={cn('flex items-center pt-4 border-t border-[#DED5C8]/15 mt-4', className)}
     {...props}
   />
 ));
 VestraCardFooter.displayName = 'VestraCardFooter';
+
+// Re-export VaynCard alias
+export const VaynCard = VestraCard;
+export const VaynCardHeader = VestraCardHeader;
+export const VaynCardTitle = VestraCardTitle;
+export const VaynCardDescription = VestraCardDescription;
+export const VaynCardContent = VestraCardContent;
+export const VaynCardFooter = VestraCardFooter;

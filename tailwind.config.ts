@@ -9,20 +9,30 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        charcoal: "#1a1a1a",
-        "charcoal-light": "#262626",
-        ivory: "#f5f0e8",
-        "ivory-dim": "#d4cfc7",
-        silver: "#9ca3af",
-        "silver-dark": "#6b7280",
+        vayn: {
+          ivory: "#F4EFE6",
+          ink: "#24231F",
+          terracotta: "#A95239",
+          olive: "#737A60",
+          sand: "#E9E1D6",
+          border: "#DED5C8",
+          muted: "#6D6961",
+          light: "#F8F4ED",
+        },
+        charcoal: "#24231F",
+        "charcoal-light": "#2D2B26",
+        ivory: "#F4EFE6",
+        "ivory-dim": "#E9E1D6",
+        silver: "#6D6961",
+        "silver-dark": "#4A463F",
         accent: {
-          DEFAULT: "#e8c547",
-          dim: "#c9a93a",
+          DEFAULT: "#A95239",
+          dim: "#8E442F",
         },
       },
       fontFamily: {
         serif: ["'Playfair Display'", "Georgia", "serif"],
-        sans: ["'Inter'", "system-ui", "sans-serif"],
+        sans: ["'Sora'", "'Inter'", "system-ui", "sans-serif"],
       },
       keyframes: {
         "fade-in": {
@@ -37,11 +47,16 @@ const config: Config = {
           "0%": { transform: "translateX(16px)", opacity: "0" },
           "100%": { transform: "translateX(0)", opacity: "1" },
         },
+        "float": {
+          "0%, 100%": { transform: "translateY(0)" },
+          "50%": { transform: "translateY(-6px)" },
+        },
       },
       animation: {
         "fade-in": "fade-in 0.5s ease-out forwards",
         "slide-up": "slide-up 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards",
         "slide-in-right": "slide-in-right 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards",
+        "float": "float 4s ease-in-out infinite",
       },
     },
   },

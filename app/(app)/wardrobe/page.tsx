@@ -316,15 +316,15 @@ export default function WardrobePage() {
   return (
     <div className="max-w-6xl mx-auto py-8 px-4 space-y-8">
       {/* Header */}
-      <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-[#9ca3af]/15 pb-6">
+      <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-[#DED5C8]/10 pb-6">
         <div>
-          <span className="text-[10px] font-semibold tracking-[0.25em] text-[#e8c547] uppercase block mb-1">
-            Archival Inventory
+          <span className="text-[10px] font-semibold tracking-[0.25em] text-[#A95239] uppercase block mb-1 font-mono">
+            VAYN Digital Inventory
           </span>
-          <h1 className="font-serif text-3xl md:text-4xl font-normal text-[#f5f0e8] tracking-tight">
-            Atelier Wardrobe Vault
+          <h1 className="font-serif text-3xl md:text-4xl font-normal text-[#F4EFE6] tracking-tight">
+            VAYN Wardrobe Vault
           </h1>
-          <p className="text-xs md:text-sm text-[#9ca3af] mt-1">
+          <p className="text-xs md:text-sm text-[#6D6961] mt-1">
             Digitized archive of your tailored silhouettes, textiles, and signature accents ({items.length} items cataloged).
           </p>
         </div>
@@ -346,7 +346,7 @@ export default function WardrobePage() {
 
       {feedback && (
         <div
-          className={`p-3 text-xs flex items-center justify-between rounded-sm border ${
+          className={`p-3 text-xs flex items-center justify-between rounded border ${
             feedback.type === 'success'
               ? 'bg-emerald-950/40 border-emerald-800 text-emerald-200'
               : 'bg-red-950/40 border-red-800 text-red-200'
@@ -362,7 +362,7 @@ export default function WardrobePage() {
           </div>
           <button
             onClick={() => setFeedback(null)}
-            className="text-[#9ca3af] hover:text-[#f5f0e8] p-1"
+            className="text-[#6D6961] hover:text-[#F4EFE6] p-1"
           >
             <X className="h-3.5 w-3.5" />
           </button>
@@ -373,26 +373,26 @@ export default function WardrobePage() {
       <div className="space-y-4">
         <div className="flex flex-col sm:flex-row gap-3">
           <div className="relative flex-1">
-            <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-[#9ca3af]" />
+            <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-[#6D6961]" />
             <input
               type="text"
               placeholder="Search by garment title, fabric (e.g. Cashmere), dominant color..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full pl-9 pr-4 py-2 bg-[#262626]/60 border border-[#9ca3af]/25 rounded-sm text-xs text-[#f5f0e8] placeholder-[#9ca3af]/50 focus:border-[#e8c547] focus:outline-none"
+              className="w-full pl-9 pr-4 py-2 bg-[#1C1B18] border border-[#DED5C8]/20 rounded text-xs text-[#F4EFE6] placeholder-[#6D6961]/50 focus:border-[#A95239] focus:outline-none"
             />
           </div>
 
           <button
             type="button"
             onClick={() => setFavoritesOnly(!favoritesOnly)}
-            className={`px-3 py-2 rounded-sm border text-xs flex items-center gap-2 transition-all ${
+            className={`px-3 py-2 rounded border text-xs flex items-center gap-2 transition-all ${
               favoritesOnly
-                ? 'border-[#e8c547] bg-[#e8c547]/15 text-[#e8c547]'
-                : 'border-[#9ca3af]/25 bg-[#262626]/40 text-[#9ca3af] hover:text-[#f5f0e8]'
+                ? 'border-[#A95239] bg-[#A95239]/15 text-[#A95239]'
+                : 'border-[#DED5C8]/20 bg-[#24231F] text-[#6D6961] hover:text-[#F4EFE6]'
             }`}
           >
-            <Heart className={`h-3.5 w-3.5 ${favoritesOnly ? 'fill-[#e8c547]' : ''}`} />
+            <Heart className={`h-3.5 w-3.5 ${favoritesOnly ? 'fill-[#A95239]' : ''}`} />
             <span>Vault Favourites</span>
           </button>
         </div>
@@ -402,10 +402,10 @@ export default function WardrobePage() {
           <button
             type="button"
             onClick={() => setSelectedCategory('ALL')}
-            className={`px-3 py-1.5 rounded-sm border shrink-0 transition-colors uppercase font-mono text-[10px] ${
+            className={`px-3 py-1.5 rounded border shrink-0 transition-colors uppercase font-mono text-[10px] ${
               selectedCategory === 'ALL'
-                ? 'border-[#e8c547] bg-[#e8c547] text-[#1a1a1a] font-bold'
-                : 'border-[#9ca3af]/20 bg-[#262626]/40 text-[#9ca3af] hover:text-[#f5f0e8]'
+                ? 'border-[#A95239] bg-[#A95239] text-[#F4EFE6] font-bold'
+                : 'border-[#DED5C8]/15 bg-[#24231F] text-[#6D6961] hover:text-[#F4EFE6]'
             }`}
           >
             All Pieces ({items.length})
@@ -417,10 +417,10 @@ export default function WardrobePage() {
                 key={cat}
                 type="button"
                 onClick={() => setSelectedCategory(cat)}
-                className={`px-3 py-1.5 rounded-sm border shrink-0 transition-colors uppercase font-mono text-[10px] ${
+                className={`px-3 py-1.5 rounded border shrink-0 transition-colors uppercase font-mono text-[10px] ${
                   selectedCategory === cat
-                    ? 'border-[#e8c547] bg-[#e8c547] text-[#1a1a1a] font-bold'
-                    : 'border-[#9ca3af]/20 bg-[#262626]/40 text-[#9ca3af] hover:text-[#f5f0e8]'
+                    ? 'border-[#A95239] bg-[#A95239] text-[#F4EFE6] font-bold'
+                    : 'border-[#DED5C8]/15 bg-[#24231F] text-[#6D6961] hover:text-[#F4EFE6]'
                 }`}
               >
                 {cat.replace(/_/g, ' ')} ({count})

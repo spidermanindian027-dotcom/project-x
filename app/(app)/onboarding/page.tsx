@@ -400,11 +400,11 @@ export default function OnboardingPage() {
       <div className="mb-8">
         <div className="flex items-center justify-between mb-4">
           <div className="flex items-center gap-2">
-            <span className="text-[11px] font-mono tracking-widest text-[#e8c547] uppercase">
-              Atelier Onboarding • Step 0{step} of 06
+            <span className="text-[11px] font-mono tracking-widest text-[#A95239] uppercase font-semibold">
+              VAYN Atelier Onboarding • Step 0{step} of 06
             </span>
             {isSaving && (
-              <span className="text-[10px] text-[#9ca3af] flex items-center gap-1 font-mono">
+              <span className="text-[10px] text-[#6D6961] flex items-center gap-1 font-mono">
                 <LoadingSpinner size="sm" /> Syncing...
               </span>
             )}
@@ -412,7 +412,7 @@ export default function OnboardingPage() {
           {step < 6 && (
             <button
               onClick={handleFinish}
-              className="text-xs text-[#9ca3af] hover:text-[#f5f0e8] tracking-wider uppercase transition-colors"
+              className="text-xs text-[#6D6961] hover:text-[#F4EFE6] tracking-wider uppercase transition-colors font-mono"
             >
               Skip to Atelier →
             </button>
@@ -420,7 +420,7 @@ export default function OnboardingPage() {
         </div>
 
         {/* Numbered Dots / Progress */}
-        <div className="flex items-center justify-between gap-2 border-b border-[#9ca3af]/15 pb-4">
+        <div className="flex items-center justify-between gap-2 border-b border-[#DED5C8]/10 pb-4">
           {[1, 2, 3, 4, 5, 6].map((num) => {
             const isCompleted = num < step;
             const isCurrent = num === step;
@@ -429,15 +429,15 @@ export default function OnboardingPage() {
                 <div
                   className={`h-2 w-full rounded-full transition-all duration-300 ${
                     isCurrent
-                      ? 'bg-[#e8c547]'
+                      ? 'bg-[#A95239]'
                       : isCompleted
-                      ? 'bg-[#e8c547]/60'
-                      : 'bg-[#262626]'
+                      ? 'bg-[#A95239]/60'
+                      : 'bg-[#24231F]'
                   }`}
                 />
                 <span
                   className={`text-[9px] font-mono ${
-                    isCurrent ? 'text-[#e8c547] font-bold' : isCompleted ? 'text-[#d4cfc7]' : 'text-[#9ca3af]/40'
+                    isCurrent ? 'text-[#A95239] font-bold' : isCompleted ? 'text-[#E9E1D6]' : 'text-[#6D6961]/40'
                   }`}
                 >
                   0{num}
@@ -449,7 +449,7 @@ export default function OnboardingPage() {
       </div>
 
       {saveError && (
-        <div className="mb-4 p-3 bg-red-950/40 border border-red-800 text-red-200 text-xs flex items-center gap-2 rounded-sm">
+        <div className="mb-4 p-3 bg-red-950/40 border border-red-800 text-red-200 text-xs flex items-center gap-2 rounded">
           <AlertCircle className="h-4 w-4 shrink-0 text-red-400" />
           <span>{saveError}</span>
         </div>
@@ -466,29 +466,29 @@ export default function OnboardingPage() {
           exit="exit"
           transition={{ duration: 0.3, ease: 'easeInOut' }}
         >
-          <VestraCard variant="bordered" padding="lg" className="relative overflow-hidden bg-[#1a1a1a]/95">
+          <VestraCard variant="bordered" padding="lg" className="relative overflow-hidden bg-[#24231F] border-[#DED5C8]/15">
             {/* STEP 1: WELCOME */}
             {step === 1 && (
               <div className="space-y-6">
                 <div>
-                  <span className="text-[10px] font-semibold tracking-[0.25em] text-[#e8c547] uppercase block mb-1">
+                  <span className="text-[10px] font-semibold tracking-[0.25em] text-[#A95239] uppercase block mb-1 font-mono">
                     Phase I • Welcome
                   </span>
-                  <h1 className="font-serif text-3xl md:text-4xl font-normal text-[#f5f0e8] tracking-tight leading-tight">
-                    Calibrate Your Couture Intelligence
+                  <h1 className="font-serif text-3xl md:text-4xl font-normal text-[#F4EFE6] tracking-tight leading-tight">
+                    Calibrate Your Signature Style
                   </h1>
-                  <p className="mt-3 text-sm text-[#9ca3af] leading-relaxed">
-                    VESTRA synthesizes tailoring principles, color theory, and proportion architecture to refine your personal wardrobe. In the next few moments, configure your aesthetic compass.
+                  <p className="mt-3 text-sm text-[#E9E1D6]/80 leading-relaxed">
+                    VAYN synthesizes tailoring principles, color theory, and proportion architecture to refine your personal wardrobe. In the next few moments, configure your aesthetic compass.
                   </p>
                 </div>
 
-                <div className="p-4 bg-[#262626]/60 border border-[#9ca3af]/20 rounded-sm flex items-start gap-3">
-                  <Shield className="h-5 w-5 text-[#e8c547] shrink-0 mt-0.5" />
+                <div className="p-4 bg-[#1C1B18] border border-[#DED5C8]/15 rounded flex items-start gap-3">
+                  <Shield className="h-5 w-5 text-[#A95239] shrink-0 mt-0.5" />
                   <div>
-                    <h4 className="text-xs font-semibold text-[#f5f0e8] uppercase tracking-wider">
+                    <h4 className="text-xs font-semibold text-[#F4EFE6] uppercase tracking-wider font-mono">
                       Privacy & Data Integrity
                     </h4>
-                    <p className="text-xs text-[#9ca3af] mt-1 leading-relaxed">
+                    <p className="text-xs text-[#6D6961] mt-1 leading-relaxed">
                       All styling data is used only to personalise your experience. No data is sold or shared.
                     </p>
                   </div>
@@ -978,50 +978,50 @@ export default function OnboardingPage() {
                   <h2 className="font-serif text-2xl md:text-3xl font-normal text-[#f5f0e8] tracking-tight">
                     Your Sartorial Blueprint
                   </h2>
-                  <p className="mt-1 text-xs text-[#9ca3af]">
-                    Profile calibrated. Here is the configuration powering your VESTRA AI engine.
+                  <p className="mt-1 text-xs text-[#6D6961]">
+                    Profile calibrated. Here is the configuration powering your VAYN AI engine.
                   </p>
                 </div>
 
                 {/* Summary Grid */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                  <div className="p-3.5 bg-[#262626]/50 border border-[#9ca3af]/20 rounded-sm">
-                    <span className="text-[10px] font-mono uppercase text-[#e8c547] block mb-1">
+                  <div className="p-3.5 bg-[#1C1B18] border border-[#DED5C8]/15 rounded">
+                    <span className="text-[10px] font-mono uppercase text-[#A95239] block mb-1 font-semibold">
                       Aesthetic Archetypes
                     </span>
-                    <span className="text-sm font-semibold text-[#f5f0e8] block">
+                    <span className="text-sm font-semibold text-[#F4EFE6] block">
                       {selectedArchetypes.length > 0
                         ? selectedArchetypes.map((a) => a.replace(/_/g, ' ')).join(' • ')
                         : 'Default Modernist'}
                     </span>
                   </div>
 
-                  <div className="p-3.5 bg-[#262626]/50 border border-[#9ca3af]/20 rounded-sm">
-                    <span className="text-[10px] font-mono uppercase text-[#e8c547] block mb-1">
+                  <div className="p-3.5 bg-[#1C1B18] border border-[#DED5C8]/15 rounded">
+                    <span className="text-[10px] font-mono uppercase text-[#A95239] block mb-1 font-semibold">
                       Proportion Architecture
                     </span>
-                    <span className="text-sm font-semibold text-[#f5f0e8] block">
+                    <span className="text-sm font-semibold text-[#F4EFE6] block">
                       {bodyProportionType.replace(/_/g, ' ')}
                     </span>
                   </div>
 
-                  <div className="p-3.5 bg-[#262626]/50 border border-[#9ca3af]/20 rounded-sm">
-                    <span className="text-[10px] font-mono uppercase text-[#e8c547] block mb-1">
+                  <div className="p-3.5 bg-[#1C1B18] border border-[#DED5C8]/15 rounded">
+                    <span className="text-[10px] font-mono uppercase text-[#A95239] block mb-1 font-semibold">
                       Undertone & Palette
                     </span>
-                    <span className="text-xs text-[#f5f0e8] block capitalize">
+                    <span className="text-xs text-[#F4EFE6] block capitalize">
                       Undertone: {skinToneCategory}
                     </span>
-                    <span className="text-[11px] text-[#9ca3af] block mt-0.5">
+                    <span className="text-[11px] text-[#6D6961] block mt-0.5">
                       {preferredColours.length} preferred hues • {avoidedColours.length} avoided hues
                     </span>
                   </div>
 
-                  <div className="p-3.5 bg-[#262626]/50 border border-[#9ca3af]/20 rounded-sm">
-                    <span className="text-[10px] font-mono uppercase text-[#e8c547] block mb-1">
+                  <div className="p-3.5 bg-[#1C1B18] border border-[#DED5C8]/15 rounded">
+                    <span className="text-[10px] font-mono uppercase text-[#A95239] block mb-1 font-semibold">
                       Reference Photo
                     </span>
-                    <span className="text-sm font-semibold text-[#f5f0e8] block">
+                    <span className="text-sm font-semibold text-[#F4EFE6] block">
                       {photoUrl ? 'Attached & Secured' : 'None Provided (Manual Model)'}
                     </span>
                   </div>

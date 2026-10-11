@@ -193,18 +193,18 @@ export default function AdminDashboardPage() {
   return (
     <div className="space-y-8 animate-fadeIn">
       {/* Top Title & Navigation */}
-      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-[#9ca3af]/15 pb-6">
+      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-[#DED5C8]/10 pb-6">
         <div>
           <div className="flex items-center gap-2 mb-1">
-            <span className="text-[10px] uppercase font-mono tracking-[0.2em] text-[#e8c547] bg-[#e8c547]/10 px-2 py-0.5 border border-[#e8c547]/30 rounded-sm">
+            <span className="text-[10px] uppercase font-mono tracking-[0.2em] text-[#A95239] bg-[#A95239]/10 px-2 py-0.5 border border-[#A95239]/30 rounded">
               Root Governance
             </span>
-            <span className="text-xs text-[#9ca3af] font-mono">Central Atelier Node</span>
+            <span className="text-xs text-[#6D6961] font-mono">Central VAYN Atelier Node</span>
           </div>
-          <h1 className="text-2xl sm:text-3xl font-serif font-bold text-[#f5f0e8] tracking-tight">
-            Administrative Command
+          <h1 className="text-2xl sm:text-3xl font-serif font-bold text-[#F4EFE6] tracking-tight">
+            VAYN Administrative Command
           </h1>
-          <p className="text-xs text-[#9ca3af] mt-0.5">
+          <p className="text-xs text-[#6D6961] mt-0.5">
             Real-time platform operations, client registry metrics, and operational audit telemetry.
           </p>
         </div>
@@ -215,40 +215,40 @@ export default function AdminDashboardPage() {
             size="sm"
             onClick={() => void handleManualSync()}
             disabled={isRefreshing}
-            className="border border-[#9ca3af]/20 text-xs font-mono text-[#9ca3af] hover:text-[#f5f0e8]"
+            className="border border-[#DED5C8]/20 text-xs font-mono text-[#6D6961] hover:text-[#F4EFE6]"
           >
             <RefreshCw className={`h-3.5 w-3.5 mr-1.5 ${isRefreshing ? 'animate-spin' : ''}`} />
             Sync Telemetry
           </VestraButton>
 
           {/* Tab Selector */}
-          <div className="flex items-center bg-[#262626] border border-[#9ca3af]/20 p-1 rounded-sm text-xs font-mono">
+          <div className="flex items-center bg-[#1C1B18] border border-[#DED5C8]/20 p-1 rounded text-xs font-mono">
             <button
               onClick={() => setActiveTab('overview')}
-              className={`px-3 py-1 rounded-sm transition-colors ${
+              className={`px-3 py-1 rounded transition-colors ${
                 activeTab === 'overview'
-                  ? 'bg-[#e8c547] text-black font-semibold'
-                  : 'text-[#9ca3af] hover:text-[#f5f0e8]'
+                  ? 'bg-[#A95239] text-[#F4EFE6] font-semibold'
+                  : 'text-[#6D6961] hover:text-[#F4EFE6]'
               }`}
             >
               Overview
             </button>
             <button
               onClick={() => setActiveTab('logs')}
-              className={`px-3 py-1 rounded-sm transition-colors ${
+              className={`px-3 py-1 rounded transition-colors ${
                 activeTab === 'logs'
-                  ? 'bg-[#e8c547] text-black font-semibold'
-                  : 'text-[#9ca3af] hover:text-[#f5f0e8]'
+                  ? 'bg-[#A95239] text-[#F4EFE6] font-semibold'
+                  : 'text-[#6D6961] hover:text-[#F4EFE6]'
               }`}
             >
               Audit Logs ({logs.length})
             </button>
             <button
               onClick={() => setActiveTab('users')}
-              className={`px-3 py-1 rounded-sm transition-colors ${
+              className={`px-3 py-1 rounded transition-colors ${
                 activeTab === 'users'
-                  ? 'bg-[#e8c547] text-black font-semibold'
-                  : 'text-[#9ca3af] hover:text-[#f5f0e8]'
+                  ? 'bg-[#A95239] text-[#F4EFE6] font-semibold'
+                  : 'text-[#6D6961] hover:text-[#F4EFE6]'
               }`}
             >
               Client Roster ({users.length})
@@ -264,60 +264,58 @@ export default function AdminDashboardPage() {
         <div className="space-y-8">
           {/* Key Metric KPI Cards */}
           <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-3">
-            <VestraCard className="p-4 border-[#9ca3af]/15 bg-[#1c1c1c]">
-              <div className="flex items-center justify-between text-[#9ca3af] mb-2">
+            <VestraCard className="p-4 border-[#DED5C8]/15 bg-[#24231F]">
+              <div className="flex items-center justify-between text-[#6D6961] mb-2">
                 <span className="text-[10px] uppercase font-mono tracking-wider">Clients</span>
-                <Users className="h-4 w-4 text-[#e8c547]" />
+                <Users className="h-4 w-4 text-[#A95239]" />
               </div>
-              <p className="text-2xl font-serif font-bold text-[#f5f0e8]">{metrics.totalUsers}</p>
-              <p className="text-[10px] text-[#9ca3af] font-mono mt-1">Total Registered</p>
+              <p className="text-2xl font-serif font-bold text-[#F4EFE6]">{metrics.totalUsers}</p>
+              <p className="text-[10px] text-[#6D6961] font-mono mt-1">Total Registered</p>
             </VestraCard>
 
-            <VestraCard className="p-4 border-[#9ca3af]/15 bg-[#1c1c1c]">
-              <div className="flex items-center justify-between text-[#9ca3af] mb-2">
+            <VestraCard className="p-4 border-[#DED5C8]/15 bg-[#24231F]">
+              <div className="flex items-center justify-between text-[#6D6961] mb-2">
                 <span className="text-[10px] uppercase font-mono tracking-wider">Active 7D</span>
                 <Activity className="h-4 w-4 text-emerald-400" />
               </div>
-              <p className="text-2xl font-serif font-bold text-[#f5f0e8]">{metrics.activeUsers}</p>
+              <p className="text-2xl font-serif font-bold text-[#F4EFE6]">{metrics.activeUsers}</p>
               <p className="text-[10px] text-emerald-400/80 font-mono mt-1">Active Sessions</p>
             </VestraCard>
 
-            <VestraCard className="p-4 border-[#9ca3af]/15 bg-[#1c1c1c]">
-              <div className="flex items-center justify-between text-[#9ca3af] mb-2">
+            <VestraCard className="p-4 border-[#DED5C8]/15 bg-[#24231F]">
+              <div className="flex items-center justify-between text-[#6D6961] mb-2">
                 <span className="text-[10px] uppercase font-mono tracking-wider">Scans</span>
                 <Scan className="h-4 w-4 text-sky-400" />
               </div>
-              <p className="text-2xl font-serif font-bold text-[#f5f0e8]">{metrics.totalOutfitAnalyses}</p>
-              <p className="text-[10px] text-[#9ca3af] font-mono mt-1">Outfit Analyses</p>
+              <p className="text-2xl font-serif font-bold text-[#F4EFE6]">{metrics.totalOutfitAnalyses}</p>
+              <p className="text-[10px] text-[#6D6961] font-mono mt-1">Outfit Analyses</p>
             </VestraCard>
 
-            <VestraCard className="p-4 border-[#9ca3af]/15 bg-[#1c1c1c]">
-              <div className="flex items-center justify-between text-[#9ca3af] mb-2">
+            <VestraCard className="p-4 border-[#DED5C8]/15 bg-[#24231F]">
+              <div className="flex items-center justify-between text-[#6D6961] mb-2">
                 <span className="text-[10px] uppercase font-mono tracking-wider">Avg Score</span>
-                <Star className="h-4 w-4 text-[#e8c547]" />
+                <Star className="h-4 w-4 text-[#A95239]" />
               </div>
-              <p className="text-2xl font-serif font-bold text-[#f5f0e8]">
-                {metrics.averageOutfitScore !== null ? `${metrics.averageOutfitScore}` : '—'}
-              </p>
-              <p className="text-[10px] text-[#9ca3af] font-mono mt-1">Atelier Quality</p>
+              <p className="text-2xl font-serif font-bold text-[#F4EFE6]">{metrics.averageOutfitScore !== null ? `${metrics.averageOutfitScore}` : '—'}</p>
+              <p className="text-[10px] text-[#6D6961] font-mono mt-1">Atelier Quality</p>
             </VestraCard>
 
-            <VestraCard className="p-4 border-[#9ca3af]/15 bg-[#1c1c1c]">
-              <div className="flex items-center justify-between text-[#9ca3af] mb-2">
+            <VestraCard className="p-4 border-[#DED5C8]/15 bg-[#24231F]">
+              <div className="flex items-center justify-between text-[#6D6961] mb-2">
                 <span className="text-[10px] uppercase font-mono tracking-wider">Garments</span>
                 <ShoppingBag className="h-4 w-4 text-purple-400" />
               </div>
-              <p className="text-2xl font-serif font-bold text-[#f5f0e8]">{metrics.totalWardrobeItems}</p>
-              <p className="text-[10px] text-[#9ca3af] font-mono mt-1">Cataloged</p>
+              <p className="text-2xl font-serif font-bold text-[#F4EFE6]">{metrics.totalWardrobeItems}</p>
+              <p className="text-[10px] text-[#6D6961] font-mono mt-1">Cataloged</p>
             </VestraCard>
 
-            <VestraCard className="p-4 border-[#9ca3af]/15 bg-[#1c1c1c]">
-              <div className="flex items-center justify-between text-[#9ca3af] mb-2">
+            <VestraCard className="p-4 border-[#DED5C8]/15 bg-[#24231F]">
+              <div className="flex items-center justify-between text-[#6D6961] mb-2">
                 <span className="text-[10px] uppercase font-mono tracking-wider">Try-Ons</span>
-                <Sparkles className="h-4 w-4 text-[#e8c547]" />
+                <Sparkles className="h-4 w-4 text-[#A95239]" />
               </div>
-              <p className="text-2xl font-serif font-bold text-[#f5f0e8]">{metrics.totalTryOnJobs}</p>
-              <p className="text-[10px] text-[#9ca3af] font-mono mt-1">VTON Syntheses</p>
+              <p className="text-2xl font-serif font-bold text-[#F4EFE6]">{metrics.totalTryOnJobs}</p>
+              <p className="text-[10px] text-[#6D6961] font-mono mt-1">VTON Syntheses</p>
             </VestraCard>
 
             <VestraCard className="p-4 border-[#9ca3af]/15 bg-[#1c1c1c]">

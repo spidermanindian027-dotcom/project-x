@@ -229,14 +229,14 @@ export default function OutfitScannerPage() {
   return (
     <div className="max-w-4xl mx-auto py-8 px-4 space-y-8">
       {/* Editorial Header */}
-      <div className="border-b border-[#9ca3af]/15 pb-6">
-        <span className="text-[10px] font-semibold tracking-[0.25em] text-[#e8c547] uppercase block mb-1">
-          Atelier Computer Vision
+      <div className="border-b border-[#DED5C8]/10 pb-6">
+        <span className="text-[10px] font-semibold tracking-[0.25em] text-[#A95239] uppercase block mb-1 font-mono">
+          VAYN Vision Intelligence
         </span>
-        <h1 className="font-serif text-3xl md:text-4xl font-normal text-[#f5f0e8] tracking-tight">
-          VESTRA Outfit Scanner
+        <h1 className="font-serif text-3xl md:text-4xl font-normal text-[#F4EFE6] tracking-tight">
+          VAYN Outfit Scanner
         </h1>
-        <p className="text-xs md:text-sm text-[#9ca3af] mt-1 max-w-2xl">
+        <p className="text-xs md:text-sm text-[#6D6961] mt-1 max-w-2xl">
           Real-time aesthetic evaluation decomposing color harmony, fit geometry, occasion appropriateness, and tailoring precision.
         </p>
       </div>
@@ -244,9 +244,9 @@ export default function OutfitScannerPage() {
       {/* IDLE STATE */}
       {state === 'idle' && (
         <div className="space-y-6">
-          <div className="p-4 bg-[#262626]/40 border border-[#9ca3af]/20 rounded-sm flex items-start gap-3">
-            <Shield className="h-5 w-5 text-[#e8c547] shrink-0 mt-0.5" />
-            <p className="text-xs text-[#9ca3af] leading-relaxed">
+          <div className="p-4 bg-[#24231F] border border-[#DED5C8]/15 rounded flex items-start gap-3">
+            <Shield className="h-5 w-5 text-[#A95239] shrink-0 mt-0.5" />
+            <p className="text-xs text-[#E9E1D6]/80 leading-relaxed">
               For optimal calibration, please frame your full body from head to footwear in good lighting against an uncluttered backdrop.
             </p>
           </div>
@@ -254,26 +254,26 @@ export default function OutfitScannerPage() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div
               onClick={startCamera}
-              className="p-8 border-2 border-dashed border-[#9ca3af]/25 hover:border-[#e8c547] bg-[#262626]/30 rounded-sm cursor-pointer transition-all flex flex-col items-center justify-center text-center group"
+              className="p-8 border-2 border-dashed border-[#DED5C8]/20 hover:border-[#A95239] bg-[#24231F] rounded cursor-pointer transition-all flex flex-col items-center justify-center text-center group"
             >
-              <div className="h-14 w-14 rounded-full bg-[#1a1a1a] border border-[#9ca3af]/20 group-hover:border-[#e8c547] flex items-center justify-center mb-4 transition-colors">
-                <Camera className="h-6 w-6 text-[#9ca3af] group-hover:text-[#e8c547] transition-colors" />
+              <div className="h-14 w-14 rounded-full bg-[#1C1B18] border border-[#DED5C8]/15 group-hover:border-[#A95239] flex items-center justify-center mb-4 transition-colors">
+                <Camera className="h-6 w-6 text-[#6D6961] group-hover:text-[#A95239] transition-colors" />
               </div>
-              <h3 className="font-serif text-lg text-[#f5f0e8]">Use Live Camera</h3>
-              <p className="text-xs text-[#9ca3af] mt-1 max-w-xs">
+              <h3 className="font-serif text-lg text-[#F4EFE6]">Use Live Camera</h3>
+              <p className="text-xs text-[#6D6961] mt-1 max-w-xs">
                 Scan your outfit directly with on-screen silhouette framing guides
               </p>
             </div>
 
             <div
               onClick={() => fileInputRef.current?.click()}
-              className="p-8 border-2 border-dashed border-[#9ca3af]/25 hover:border-[#e8c547] bg-[#262626]/30 rounded-sm cursor-pointer transition-all flex flex-col items-center justify-center text-center group"
+              className="p-8 border-2 border-dashed border-[#DED5C8]/20 hover:border-[#A95239] bg-[#24231F] rounded cursor-pointer transition-all flex flex-col items-center justify-center text-center group"
             >
-              <div className="h-14 w-14 rounded-full bg-[#1a1a1a] border border-[#9ca3af]/20 group-hover:border-[#e8c547] flex items-center justify-center mb-4 transition-colors">
-                <Upload className="h-6 w-6 text-[#9ca3af] group-hover:text-[#e8c547] transition-colors" />
+              <div className="h-14 w-14 rounded-full bg-[#1C1B18] border border-[#DED5C8]/15 group-hover:border-[#A95239] flex items-center justify-center mb-4 transition-colors">
+                <Upload className="h-6 w-6 text-[#6D6961] group-hover:text-[#A95239] transition-colors" />
               </div>
-              <h3 className="font-serif text-lg text-[#f5f0e8]">Upload Photo</h3>
-              <p className="text-xs text-[#9ca3af] mt-1 max-w-xs">
+              <h3 className="font-serif text-lg text-[#F4EFE6]">Upload Photo</h3>
+              <p className="text-xs text-[#6D6961] mt-1 max-w-xs">
                 Select an existing photo (JPEG, PNG, WebP up to 10MB)
               </p>
             </div>
@@ -478,19 +478,19 @@ export default function OutfitScannerPage() {
           )}
 
           {/* Large Editorial Header with styleLabel */}
-          <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-[#9ca3af]/15 pb-6">
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-[#DED5C8]/10 pb-6">
             <div>
-              <span className="text-[10px] font-semibold tracking-[0.25em] text-[#e8c547] uppercase block mb-1">
+              <span className="text-[10px] font-semibold tracking-[0.25em] text-[#A95239] uppercase block mb-1 font-mono">
                 Aesthetic Label
               </span>
-              <h2 className="font-serif text-3xl md:text-4xl font-normal text-[#f5f0e8] tracking-tight">
+              <h2 className="font-serif text-3xl md:text-4xl font-normal text-[#F4EFE6] tracking-tight">
                 {analysis.styleLabel}
               </h2>
               <div className="flex flex-wrap gap-2 mt-3">
                 {analysis.styleTags.map((tag) => (
                   <span
                     key={tag}
-                    className="text-[10px] font-mono px-2 py-0.5 bg-[#262626] border border-[#9ca3af]/25 text-[#d4cfc7] rounded-sm"
+                    className="text-[10px] font-mono px-2 py-0.5 bg-[#24231F] border border-[#DED5C8]/15 text-[#E9E1D6] rounded"
                   >
                     #{tag}
                   </span>
@@ -516,8 +516,8 @@ export default function OutfitScannerPage() {
           {/* Top Score Matrix: Overall Circular Progress + Breakdown Bars */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {/* Circular Progress Ring */}
-            <VestraCard variant="bordered" padding="lg" className="flex flex-col items-center justify-center text-center">
-              <span className="text-[10px] font-mono uppercase text-[#e8c547] mb-4 tracking-wider">
+            <VestraCard variant="bordered" padding="lg" className="flex flex-col items-center justify-center text-center border-[#DED5C8]/15 bg-[#24231F]">
+              <span className="text-[10px] font-mono uppercase text-[#A95239] mb-4 tracking-wider font-semibold">
                 Overall Sartorial Score
               </span>
               <div className="relative w-36 h-36 flex items-center justify-center">
@@ -526,7 +526,7 @@ export default function OutfitScannerPage() {
                     cx="50"
                     cy="50"
                     r="40"
-                    stroke="#262626"
+                    stroke="#1C1B18"
                     strokeWidth="8"
                     fill="transparent"
                   />
@@ -534,7 +534,7 @@ export default function OutfitScannerPage() {
                     cx="50"
                     cy="50"
                     r="40"
-                    stroke="#e8c547"
+                    stroke="#A95239"
                     strokeWidth="8"
                     strokeDasharray={251.2}
                     initial={{ strokeDashoffset: 251.2 }}
@@ -547,20 +547,20 @@ export default function OutfitScannerPage() {
                   />
                 </svg>
                 <div className="absolute inset-0 flex flex-col items-center justify-center">
-                  <span className="font-serif text-3xl text-[#f5f0e8] font-normal">
+                  <span className="font-serif text-3xl text-[#F4EFE6] font-normal">
                     {analysis.overallScore}
                   </span>
-                  <span className="text-[10px] text-[#9ca3af] font-mono">/ 100</span>
+                  <span className="text-[10px] text-[#6D6961] font-mono">/ 100</span>
                 </div>
               </div>
-              <span className="text-[11px] text-[#9ca3af] mt-4 font-mono">
+              <span className="text-[11px] text-[#6D6961] mt-4 font-mono">
                 Confidence: {Math.round(analysis.confidence * 100)}%
               </span>
             </VestraCard>
 
             {/* 6 Dimension Horizontal Bars */}
-            <VestraCard variant="bordered" padding="md" className="md:col-span-2 space-y-3.5 justify-center flex flex-col">
-              <span className="text-[10px] font-mono uppercase text-[#e8c547] tracking-wider block">
+            <VestraCard variant="bordered" padding="md" className="md:col-span-2 space-y-3.5 justify-center flex flex-col border-[#DED5C8]/15 bg-[#24231F]">
+              <span className="text-[10px] font-mono uppercase text-[#A95239] tracking-wider block font-semibold">
                 Evaluative Dimension Breakdown
               </span>
 
@@ -574,15 +574,15 @@ export default function OutfitScannerPage() {
               ].map((dim) => (
                 <div key={dim.label} className="space-y-1">
                   <div className="flex items-center justify-between text-xs">
-                    <span className="text-[#f5f0e8] font-medium">
+                    <span className="text-[#F4EFE6] font-medium">
                       {dim.label}{' '}
-                      <span className="text-[10px] text-[#9ca3af] font-mono">({dim.weight})</span>
+                      <span className="text-[10px] text-[#6D6961] font-mono">({dim.weight})</span>
                     </span>
-                    <span className="text-[#e8c547] font-mono font-semibold">{dim.score}%</span>
+                    <span className="text-[#A95239] font-mono font-semibold">{dim.score}%</span>
                   </div>
-                  <div className="h-1.5 w-full bg-[#262626] rounded-full overflow-hidden">
+                  <div className="h-1.5 w-full bg-[#1C1B18] rounded-full overflow-hidden">
                     <motion.div
-                      className="h-full bg-[#e8c547]"
+                      className="h-full bg-[#A95239]"
                       initial={{ width: 0 }}
                       animate={{ width: `${dim.score}%` }}
                       transition={{ duration: 0.8, ease: 'easeOut' }}
@@ -594,11 +594,11 @@ export default function OutfitScannerPage() {
           </div>
 
           {/* Observations Paragraph */}
-          <VestraCard variant="bordered" padding="md">
-            <span className="text-[10px] font-semibold tracking-[0.25em] text-[#e8c547] uppercase block mb-1">
+          <VestraCard variant="bordered" padding="md" className="border-[#DED5C8]/15 bg-[#24231F]">
+            <span className="text-[10px] font-semibold tracking-[0.25em] text-[#A95239] uppercase block mb-1 font-mono">
               Occasion & Silhouette Assessment
             </span>
-            <p className="text-xs md:text-sm text-[#f5f0e8] leading-relaxed">
+            <p className="text-xs md:text-sm text-[#F4EFE6] leading-relaxed">
               {analysis.occasionObservations}
             </p>
           </VestraCard>
@@ -636,51 +636,51 @@ export default function OutfitScannerPage() {
 
           {/* Recommendations Grid: Colours | Footwear | Accessories */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <VestraCard variant="bordered" padding="md">
+            <VestraCard variant="bordered" padding="md" className="border-[#DED5C8]/15 bg-[#24231F]">
               <div className="flex items-center gap-2 mb-3">
-                <Palette className="h-4 w-4 text-[#e8c547]" />
-                <span className="text-[11px] font-semibold text-[#f5f0e8] uppercase tracking-wider">
+                <Palette className="h-4 w-4 text-[#A95239]" />
+                <span className="text-[11px] font-semibold text-[#F4EFE6] uppercase tracking-wider font-mono">
                   Harmonizing Hues
                 </span>
               </div>
               <ul className="space-y-1.5">
                 {analysis.recommendedColours.map((col, idx) => (
-                  <li key={idx} className="text-xs text-[#9ca3af] flex items-center gap-2">
-                    <span className="h-1.5 w-1.5 rounded-full bg-[#e8c547]" />
+                  <li key={idx} className="text-xs text-[#E9E1D6]/80 flex items-center gap-2">
+                    <span className="h-1.5 w-1.5 rounded-full bg-[#A95239]" />
                     <span>{col}</span>
                   </li>
                 ))}
               </ul>
             </VestraCard>
 
-            <VestraCard variant="bordered" padding="md">
+            <VestraCard variant="bordered" padding="md" className="border-[#DED5C8]/15 bg-[#24231F]">
               <div className="flex items-center gap-2 mb-3">
-                <Footprints className="h-4 w-4 text-[#e8c547]" />
-                <span className="text-[11px] font-semibold text-[#f5f0e8] uppercase tracking-wider">
+                <Footprints className="h-4 w-4 text-[#A95239]" />
+                <span className="text-[11px] font-semibold text-[#F4EFE6] uppercase tracking-wider font-mono">
                   Recommended Footwear
                 </span>
               </div>
               <ul className="space-y-1.5">
                 {analysis.recommendedFootwear.map((foot, idx) => (
-                  <li key={idx} className="text-xs text-[#9ca3af] flex items-center gap-2">
-                    <span className="h-1.5 w-1.5 rounded-full bg-[#e8c547]" />
+                  <li key={idx} className="text-xs text-[#E9E1D6]/80 flex items-center gap-2">
+                    <span className="h-1.5 w-1.5 rounded-full bg-[#A95239]" />
                     <span>{foot}</span>
                   </li>
                 ))}
               </ul>
             </VestraCard>
 
-            <VestraCard variant="bordered" padding="md">
+            <VestraCard variant="bordered" padding="md" className="border-[#DED5C8]/15 bg-[#24231F]">
               <div className="flex items-center gap-2 mb-3">
-                <Watch className="h-4 w-4 text-[#e8c547]" />
-                <span className="text-[11px] font-semibold text-[#f5f0e8] uppercase tracking-wider">
+                <Watch className="h-4 w-4 text-[#A95239]" />
+                <span className="text-[11px] font-semibold text-[#F4EFE6] uppercase tracking-wider font-mono">
                   Accents & Accessories
                 </span>
               </div>
               <ul className="space-y-1.5">
                 {analysis.recommendedAccessories.map((acc, idx) => (
-                  <li key={idx} className="text-xs text-[#9ca3af] flex items-center gap-2">
-                    <span className="h-1.5 w-1.5 rounded-full bg-[#e8c547]" />
+                  <li key={idx} className="text-xs text-[#E9E1D6]/80 flex items-center gap-2">
+                    <span className="h-1.5 w-1.5 rounded-full bg-[#A95239]" />
                     <span>{acc}</span>
                   </li>
                 ))}
