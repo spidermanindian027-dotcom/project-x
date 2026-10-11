@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { motion, useScroll, useMotionValueEvent } from 'framer-motion';
 import { Menu, X, ArrowRight } from 'lucide-react';
 import { VaynLogo } from '@/components/ui/vayn-logo';
-import { VestraButton } from '@/components/ui/vestra-button';
+import { VaynButton } from '@/components/ui/vestra-button';
 
 export function Header() {
   const { scrollY } = useScroll();
@@ -23,8 +23,8 @@ export function Header() {
       transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled
-          ? 'bg-[#F4EFE6]/95 backdrop-blur-md border-b border-[#DED5C8] text-[#24231F] py-3.5 shadow-sm'
-          : 'bg-transparent py-5 border-b border-transparent text-[#F4EFE6]'
+          ? 'bg-[#F4EFE6]/95 backdrop-blur-md border-b border-[#DED5C8] text-[#24231F] py-3 shadow-sm'
+          : 'bg-[#F4EFE6]/80 backdrop-blur-sm py-4 border-b border-[#DED5C8]/60 text-[#24231F]'
       }`}
     >
       <div className="max-w-7xl mx-auto px-6 md:px-12 flex items-center justify-between">
@@ -33,83 +33,64 @@ export function Header() {
           asLink
           href="/"
           variant="full"
-          theme={isScrolled ? 'light' : 'dark'}
+          theme="light"
           size="md"
         />
 
         {/* Desktop Nav */}
-        <nav className="hidden md:flex items-center space-x-8">
+        <nav className="hidden md:flex items-center space-x-7">
           <Link
-            href="#features"
-            className={`text-xs uppercase tracking-[0.16em] font-medium transition-colors ${
-              isScrolled
-                ? 'text-[#6D6961] hover:text-[#A95239]'
-                : 'text-[#E9E1D6]/80 hover:text-[#A95239]'
-            }`}
+            href="#gallery"
+            className="text-xs uppercase tracking-[0.16em] font-medium text-[#6D6961] hover:text-[#A95239] transition-colors"
           >
-            Features
+            Gallery
           </Link>
           <Link
-            href="#how-it-works"
-            className={`text-xs uppercase tracking-[0.16em] font-medium transition-colors ${
-              isScrolled
-                ? 'text-[#6D6961] hover:text-[#A95239]'
-                : 'text-[#E9E1D6]/80 hover:text-[#A95239]'
-            }`}
+            href="#discover"
+            className="text-xs uppercase tracking-[0.16em] font-medium text-[#6D6961] hover:text-[#A95239] transition-colors"
           >
-            How It Works
+            Archetypes
           </Link>
           <Link
-            href="#philosophy"
-            className={`text-xs uppercase tracking-[0.16em] font-medium transition-colors ${
-              isScrolled
-                ? 'text-[#6D6961] hover:text-[#A95239]'
-                : 'text-[#E9E1D6]/80 hover:text-[#A95239]'
-            }`}
+            href="#stylist"
+            className="text-xs uppercase tracking-[0.16em] font-medium text-[#6D6961] hover:text-[#A95239] transition-colors"
           >
-            Philosophy
+            AI Stylist
           </Link>
           <Link
-            href="/wardrobe"
-            className={`text-xs uppercase tracking-[0.16em] font-medium transition-colors ${
-              isScrolled
-                ? 'text-[#6D6961] hover:text-[#A95239]'
-                : 'text-[#E9E1D6]/80 hover:text-[#A95239]'
-            }`}
+            href="#wardrobe"
+            className="text-xs uppercase tracking-[0.16em] font-medium text-[#6D6961] hover:text-[#A95239] transition-colors"
           >
             Wardrobe
           </Link>
           <Link
-            href="/chat"
-            className={`text-xs uppercase tracking-[0.16em] font-medium transition-colors ${
-              isScrolled
-                ? 'text-[#6D6961] hover:text-[#A95239]'
-                : 'text-[#E9E1D6]/80 hover:text-[#A95239]'
-            }`}
+            href="#tryon"
+            className="text-xs uppercase tracking-[0.16em] font-medium text-[#6D6961] hover:text-[#A95239] transition-colors"
           >
-            Stylist
+            Try-On & Scan
           </Link>
         </nav>
 
         {/* Desktop CTAs */}
-        <div className="hidden md:flex items-center space-x-4">
+        <div className="hidden md:flex items-center space-x-3">
           <Link href="/login">
-            <VestraButton
-              variant={isScrolled ? 'secondary' : 'ghost'}
+            <VaynButton
+              variant="secondary"
               size="sm"
-              className={isScrolled ? 'border-[#DED5C8] text-[#24231F] hover:bg-[#E9E1D6]' : ''}
+              className="border-[#DED5C8] text-[#24231F] hover:bg-[#E9E1D6]"
             >
               Sign In
-            </VestraButton>
+            </VaynButton>
           </Link>
           <Link href="/onboarding">
-            <VestraButton
+            <VaynButton
               variant="primary"
               size="sm"
+              className="bg-[#A95239] hover:bg-[#8D442F] text-[#F8F4ED]"
               rightIcon={<ArrowRight className="h-3.5 w-3.5" />}
             >
               Find My Style
-            </VestraButton>
+            </VaynButton>
           </Link>
         </div>
 
@@ -117,9 +98,7 @@ export function Header() {
         <div className="md:hidden flex items-center">
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className={`p-1.5 focus:outline-none transition-colors ${
-              isScrolled ? 'text-[#24231F] hover:text-[#A95239]' : 'text-[#F4EFE6] hover:text-[#A95239]'
-            }`}
+            className="p-1.5 focus:outline-none transition-colors text-[#24231F] hover:text-[#A95239]"
             aria-label="Toggle menu"
           >
             {mobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
@@ -138,50 +117,50 @@ export function Header() {
         >
           <div className="flex flex-col space-y-4">
             <Link
-              href="#features"
+              href="#gallery"
               onClick={() => setMobileMenuOpen(false)}
               className="text-xs uppercase tracking-widest text-[#24231F] hover:text-[#A95239] py-2 border-b border-[#DED5C8]"
             >
-              Features
+              Gallery
             </Link>
             <Link
-              href="#how-it-works"
+              href="#discover"
               onClick={() => setMobileMenuOpen(false)}
               className="text-xs uppercase tracking-widest text-[#24231F] hover:text-[#A95239] py-2 border-b border-[#DED5C8]"
             >
-              How It Works
+              Archetypes
             </Link>
             <Link
-              href="#philosophy"
+              href="#stylist"
               onClick={() => setMobileMenuOpen(false)}
               className="text-xs uppercase tracking-widest text-[#24231F] hover:text-[#A95239] py-2 border-b border-[#DED5C8]"
             >
-              Philosophy
+              AI Stylist
             </Link>
             <Link
-              href="/wardrobe"
+              href="#wardrobe"
               onClick={() => setMobileMenuOpen(false)}
               className="text-xs uppercase tracking-widest text-[#24231F] hover:text-[#A95239] py-2 border-b border-[#DED5C8]"
             >
               Digital Wardrobe
             </Link>
             <Link
-              href="/chat"
+              href="#tryon"
               onClick={() => setMobileMenuOpen(false)}
               className="text-xs uppercase tracking-widest text-[#24231F] hover:text-[#A95239] py-2 border-b border-[#DED5C8]"
             >
-              AI Stylist Chat
+              Try-On & Scan
             </Link>
             <div className="pt-4 flex flex-col gap-3">
               <Link href="/login" onClick={() => setMobileMenuOpen(false)}>
-                <VestraButton variant="secondary" className="w-full border-[#DED5C8] text-[#24231F]">
+                <VaynButton variant="secondary" className="w-full border-[#DED5C8] text-[#24231F]">
                   Sign In
-                </VestraButton>
+                </VaynButton>
               </Link>
               <Link href="/onboarding" onClick={() => setMobileMenuOpen(false)}>
-                <VestraButton variant="primary" className="w-full">
+                <VaynButton variant="primary" className="w-full bg-[#A95239] hover:bg-[#8D442F] text-[#F8F4ED]">
                   Find My Style
-                </VestraButton>
+                </VaynButton>
               </Link>
             </div>
           </div>
