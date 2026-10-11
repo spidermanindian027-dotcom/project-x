@@ -77,10 +77,23 @@ export async function POST(request: NextRequest) {
     );
   } catch (error) {
     console.error('Registration API error:', error);
+    const errString = String(error);
+    const isDbError =
+      errString.includes("Can't reach database server") ||
+      errString.includes('P1001') ||
+      errString.includes('P1012') ||
+      errString.includes('connect ECONNREFUSED') ||
+      !process.env.DATABASE_URL ||
+      (process.env.NODE_ENV === 'production' && process.env.DATABASE_URL.includes('localhost'));
+
+    const errorMsg = isDbError
+      ? 'Database connection unavailable. In cloud deployments (e.g. Vercel), configure a cloud PostgreSQL DATABASE_URL in environment variables.'
+      : 'An unexpected error occurred during registration.';
+
     return NextResponse.json(
       {
         success: false,
-        error: 'An unexpected error occurred during registration.',
+        error: errorMsg,
       },
       { status: 500 }
     );
