@@ -1,7 +1,7 @@
 import * as React from 'react';
 import Link from 'next/link';
 
-export interface VaynLogoProps {
+export interface VestraLogoProps {
   variant?: 'full' | 'icon' | 'wordmark' | 'compact';
   theme?: 'dark' | 'light' | 'terracotta' | 'monochrome';
   size?: 'sm' | 'md' | 'lg' | 'xl';
@@ -10,14 +10,14 @@ export interface VaynLogoProps {
   href?: string;
 }
 
-export function VaynLogo({
+export function VestraLogo({
   variant = 'full',
-  theme = 'dark',
+  theme = 'light',
   size = 'md',
   className = '',
   asLink = false,
   href = '/',
-}: VaynLogoProps) {
+}: VestraLogoProps) {
   // Dimensions map
   const dimensions = {
     sm: { icon: 20, text: 'text-lg', tracking: 'tracking-[0.22em]' },
@@ -26,29 +26,23 @@ export function VaynLogo({
     xl: { icon: 44, text: 'text-5xl', tracking: 'tracking-[0.28em]' },
   }[size];
 
-  // Theme colors
+  // Theme colors using VESTRA semantic tokens
   const markColor =
-    theme === 'light'
-      ? '#A95239' // Terracotta
-      : theme === 'terracotta'
-      ? '#A95239'
-      : theme === 'monochrome'
-      ? '#F4EFE6'
-      : '#A95239'; // Terracotta default accent
+    theme === 'monochrome'
+      ? 'var(--vestra-text)'
+      : 'var(--vestra-action)';
 
   const starColor =
-    theme === 'light'
-      ? '#A95239'
-      : theme === 'terracotta'
-      ? '#A95239'
-      : '#E9E1D6'; // Warm Sand sparkle
+    theme === 'monochrome'
+      ? 'var(--vestra-text-muted)'
+      : 'var(--vestra-accent)';
 
   const textColor =
-    theme === 'light'
-      ? 'text-[#24231F]'
+    theme === 'monochrome'
+      ? 'text-[var(--vestra-text)]'
       : theme === 'terracotta'
-      ? 'text-[#A95239]'
-      : 'text-[#F4EFE6]';
+      ? 'text-[var(--vestra-action)]'
+      : 'text-[var(--vestra-text)]';
 
   // Distinctive Geometric V Symbol combined with four-point editorial sparkle
   const IconMark = (
@@ -68,9 +62,9 @@ export function VaynLogo({
             width="40"
             height="40"
             rx="10"
-            fill="#24231F"
-            stroke="#DED5C8"
-            strokeOpacity="0.25"
+            fill="var(--vestra-surface)"
+            stroke="var(--vestra-border)"
+            strokeOpacity="0.8"
             strokeWidth="1.2"
           />
         )}
@@ -89,7 +83,7 @@ export function VaynLogo({
           d="M14 12L20.2 27"
           stroke={markColor}
           strokeWidth="1.5"
-          strokeOpacity="0.5"
+          strokeOpacity="0.6"
           strokeLinecap="round"
         />
 
@@ -106,7 +100,7 @@ export function VaynLogo({
     <span
       className={`font-sans font-bold uppercase ${dimensions.text} ${dimensions.tracking} ${textColor} transition-colors leading-none`}
     >
-      VAYN
+      VESTRA
     </span>
   );
 
@@ -127,3 +121,7 @@ export function VaynLogo({
 
   return content;
 }
+
+// Re-export VaynLogo as alias for backward compatibility
+export const VaynLogo = VestraLogo;
+export type VaynLogoProps = VestraLogoProps;

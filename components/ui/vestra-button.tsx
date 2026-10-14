@@ -6,20 +6,20 @@ import { Loader2 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 export const buttonVariants = cva(
-  'inline-flex items-center justify-center font-sans font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#A95239] focus-visible:ring-offset-1 focus-visible:ring-offset-[#1C1B18] disabled:pointer-events-none disabled:opacity-50 select-none cursor-pointer',
+  'inline-flex items-center justify-center font-sans font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--vestra-action)] focus-visible:ring-offset-1 focus-visible:ring-offset-[var(--vestra-bg)] disabled:pointer-events-none disabled:opacity-50 select-none cursor-pointer',
   {
     variants: {
       variant: {
         primary:
-          'bg-[#A95239] text-[#F4EFE6] font-semibold hover:bg-[#8E442F] shadow-sm hover:shadow-md active:translate-y-[1px] rounded-sm',
+          'bg-[var(--vestra-action)] text-[var(--vestra-action-text)] font-semibold hover:bg-[var(--vestra-action-hover)] shadow-sm hover:shadow-md active:translate-y-[1px] rounded-sm',
         secondary:
-          'border border-[#DED5C8]/30 bg-[#24231F]/60 text-[#F4EFE6] hover:bg-[#2D2B26] hover:border-[#DED5C8]/60 active:translate-y-[1px] rounded-sm',
+          'border border-[var(--vestra-border)] bg-[var(--vestra-surface)] text-[var(--vestra-text)] hover:bg-[var(--vestra-surface-alt)] hover:border-[var(--vestra-action)] active:translate-y-[1px] rounded-sm',
         ghost:
-          'bg-transparent text-[#E9E1D6] hover:text-[#F4EFE6] hover:bg-[#2D2B26]/60 rounded-sm',
+          'bg-transparent text-[var(--vestra-text-muted)] hover:text-[var(--vestra-text)] hover:bg-[var(--vestra-surface-alt)] rounded-sm',
         outline:
-          'border border-[#A95239]/60 text-[#A95239] hover:bg-[#A95239]/10 hover:border-[#A95239] active:translate-y-[1px] rounded-sm',
+          'border border-[var(--vestra-action)] text-[var(--vestra-action)] hover:bg-[var(--vestra-action)] hover:text-[var(--vestra-action-text)] active:translate-y-[1px] rounded-sm',
         olive:
-          'bg-[#737A60] text-[#F4EFE6] hover:bg-[#5F654F] active:translate-y-[1px] rounded-sm',
+          'bg-[var(--vestra-accent)] text-[var(--vestra-action-text)] hover:opacity-90 active:translate-y-[1px] rounded-sm',
         destructive:
           'bg-red-950/40 text-red-200 border border-red-800/50 hover:bg-red-900/60 active:translate-y-[1px] rounded-sm',
       },

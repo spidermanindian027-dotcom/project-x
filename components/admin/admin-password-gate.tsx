@@ -3,8 +3,8 @@
 import * as React from 'react';
 import Link from 'next/link';
 import { Shield, Lock, Eye, EyeOff, ArrowRight, ArrowLeft, AlertCircle } from 'lucide-react';
-import { VaynButton } from '@/components/ui/vestra-button';
-import { VaynLogo } from '@/components/ui/vayn-logo';
+import { VestraButton } from '@/components/ui/vestra-button';
+import { VestraLogo } from '@/components/ui/vayn-logo';
 
 export function AdminPasswordGate() {
   const [password, setPassword] = React.useState('');
@@ -23,7 +23,6 @@ export function AdminPasswordGate() {
     try {
       setIsLoading(true);
       setError(null);
-
       const res = await fetch('/api/admin/login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -48,26 +47,26 @@ export function AdminPasswordGate() {
 
   return (
     <div className="w-full max-w-md mx-auto">
-      <div className="bg-[#1C1B18] border border-[#DED5C8]/20 rounded-sm p-8 sm:p-10 shadow-2xl relative overflow-hidden">
+      <div className="bg-[var(--vestra-surface)] border border-[var(--vestra-border-soft)] rounded-sm p-8 sm:p-10 shadow-2xl relative overflow-hidden transition-colors duration-200">
         {/* Subtle Top Accent Bar */}
-        <div className="absolute top-0 left-0 right-0 h-1 bg-[#A95239]" />
+        <div className="absolute top-0 left-0 right-0 h-1 bg-[var(--vestra-action)]" />
 
         {/* Brand Header */}
         <div className="flex flex-col items-center text-center mb-8">
           <div className="mb-4">
-            <VaynLogo variant="icon" size="md" theme="terracotta" />
+            <VestraLogo variant="icon" size="md" />
           </div>
 
-          <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-sm bg-[#A95239]/10 border border-[#A95239]/30 text-[#A95239] font-mono text-[10px] uppercase tracking-widest mb-3">
+          <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-sm bg-[var(--vestra-action)]/10 border border-[var(--vestra-action)]/30 text-[var(--vestra-action)] font-mono text-[10px] uppercase tracking-widest mb-3 font-semibold">
             <Shield className="h-3 w-3" />
             <span>ROOT GOVERNANCE</span>
           </div>
 
-          <h1 className="font-serif text-3xl font-normal text-[#F4EFE6] tracking-tight">
+          <h1 className="font-serif text-3xl font-normal text-[var(--vestra-text)] tracking-tight">
             Admin Access Required
           </h1>
-          <p className="text-xs text-[#E9E1D6]/70 mt-2 font-sans leading-relaxed max-w-xs">
-            Enter the administrator password to unlock the Atelier Director console.
+          <p className="text-xs text-[var(--vestra-text-muted)] mt-2 font-sans leading-relaxed max-w-xs">
+            Enter the administrator password to unlock the Maison Director console.
           </p>
         </div>
 
@@ -82,27 +81,27 @@ export function AdminPasswordGate() {
         {/* Password Form */}
         <form onSubmit={handleSubmit} className="space-y-5">
           <div>
-            <label className="block text-[11px] font-mono uppercase tracking-widest text-[#E9E1D6]/80 mb-1.5">
+            <label className="block text-[11px] font-mono uppercase tracking-widest text-[var(--vestra-text-muted)] mb-1.5">
               Admin Account
             </label>
             <input
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className="w-full bg-[#24231F] border border-[#DED5C8]/20 rounded-sm px-3.5 py-2.5 text-xs text-[#F4EFE6] focus:outline-none focus:border-[#A95239] transition-colors font-mono"
+              className="w-full bg-[var(--vestra-surface-alt)] border border-[var(--vestra-border-soft)] rounded-sm px-3.5 py-2.5 text-xs text-[var(--vestra-text)] focus:outline-none focus:border-[var(--vestra-action)] transition-colors font-mono"
               placeholder="admin@vestra.ai"
             />
           </div>
 
           <div>
             <div className="flex items-center justify-between mb-1.5">
-              <label className="block text-[11px] font-mono uppercase tracking-widest text-[#E9E1D6]/80">
+              <label className="block text-[11px] font-mono uppercase tracking-widest text-[var(--vestra-text-muted)]">
                 Administrator Password
               </label>
               <button
                 type="button"
                 onClick={() => setShowPassword(!showPassword)}
-                className="text-[10px] font-mono text-[#A95239] hover:underline flex items-center gap-1"
+                className="text-[10px] font-mono text-[var(--vestra-action)] hover:underline flex items-center gap-1 cursor-pointer"
               >
                 {showPassword ? <EyeOff className="h-3 w-3" /> : <Eye className="h-3 w-3" />}
                 <span>{showPassword ? 'Hide' : 'Show'}</span>
@@ -115,37 +114,37 @@ export function AdminPasswordGate() {
                 autoFocus
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                className="w-full bg-[#24231F] border border-[#DED5C8]/20 rounded-sm px-3.5 py-2.5 text-xs text-[#F4EFE6] focus:outline-none focus:border-[#A95239] transition-colors pr-10 font-mono tracking-wider"
+                className="w-full bg-[var(--vestra-surface-alt)] border border-[var(--vestra-border-soft)] rounded-sm px-3.5 py-2.5 text-xs text-[var(--vestra-text)] focus:outline-none focus:border-[var(--vestra-action)] transition-colors pr-10 font-mono tracking-wider"
                 placeholder="Enter admin password"
               />
-              <Lock className="absolute right-3.5 top-1/2 -translate-y-1/2 h-3.5 w-3.5 text-[#6D6961] pointer-events-none" />
+              <Lock className="absolute right-3.5 top-1/2 -translate-y-1/2 h-3.5 w-3.5 text-[var(--vestra-text-muted)] pointer-events-none" />
             </div>
           </div>
 
-          <VaynButton
+          <VestraButton
             type="submit"
             variant="primary"
             size="md"
             isLoading={isLoading}
-            className="w-full bg-[#A95239] hover:bg-[#8D442F] text-[#F8F4ED] font-medium py-3"
+            className="w-full font-medium py-3"
             rightIcon={<ArrowRight className="h-4 w-4" />}
           >
             Unlock Admin Panel
-          </VaynButton>
+          </VestraButton>
         </form>
 
         {/* Footer Navigation */}
-        <div className="mt-8 pt-6 border-t border-[#DED5C8]/10 flex items-center justify-between text-xs">
+        <div className="mt-8 pt-6 border-t border-[var(--vestra-border-soft)] flex items-center justify-between text-xs">
           <Link
             href="/dashboard"
-            className="inline-flex items-center gap-1.5 text-xs font-mono text-[#6D6961] hover:text-[#E9E1D6] transition-colors"
+            className="inline-flex items-center gap-1.5 text-xs font-mono text-[var(--vestra-text-muted)] hover:text-[var(--vestra-text)] transition-colors"
           >
             <ArrowLeft className="h-3.5 w-3.5" />
             <span>Return to Studio</span>
           </Link>
 
-          <span className="text-[10px] font-mono text-[#737A60]">
-            VAYN GOVERNANCE
+          <span className="text-[10px] font-mono text-[var(--vestra-accent)] font-semibold">
+            VESTRA GOVERNANCE
           </span>
         </div>
       </div>

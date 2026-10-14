@@ -5,7 +5,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowRight, Plus } from 'lucide-react';
-import { VaynButton } from '@/components/ui/vestra-button';
+import { VestraButton } from '@/components/ui/vestra-button';
 
 interface WardrobeShowcaseItem {
   id: string;
@@ -39,8 +39,8 @@ const sampleVaultItems: WardrobeShowcaseItem[] = [
     name: 'High-Twist Pleated Wide Trousers',
     category: 'BOTTOMS',
     categoryLabel: 'Bottoms',
-    colorName: 'Deep Ink',
-    colorHex: '#24231F',
+    colorName: 'Deep Mineral',
+    colorHex: '#171411',
     material: 'Wool Crepe',
     formality: 'Executive / Evening',
     imageUrl:
@@ -52,8 +52,8 @@ const sampleVaultItems: WardrobeShowcaseItem[] = [
     name: 'Brushed Cashmere Mock-Neck',
     category: 'TOPS',
     categoryLabel: 'Tops',
-    colorName: 'Warm Ivory',
-    colorHex: '#F4EFE6',
+    colorName: 'Warm Porcelain',
+    colorHex: '#F7F4EE',
     material: 'Grade-A Cashmere',
     formality: 'Versatile',
     imageUrl:
@@ -66,7 +66,7 @@ const sampleVaultItems: WardrobeShowcaseItem[] = [
     category: 'FOOTWEAR',
     categoryLabel: 'Footwear',
     colorName: 'Espresso Black',
-    colorHex: '#1C1B18',
+    colorHex: '#171411',
     material: 'Italian Calfskin',
     formality: 'All-Season',
     imageUrl:
@@ -78,8 +78,8 @@ const sampleVaultItems: WardrobeShowcaseItem[] = [
     name: 'Unstructured Flannel Blazer',
     category: 'OUTERWEAR',
     categoryLabel: 'Outerwear',
-    colorName: 'Charcoal Grey',
-    colorHex: '#4A463F',
+    colorName: 'Charcoal Umber',
+    colorHex: '#3A342A',
     material: 'Flannel Wool',
     formality: 'Smart Casual',
     imageUrl:
@@ -120,38 +120,38 @@ export function WardrobeSection() {
   return (
     <section
       id="wardrobe"
-      className="py-24 sm:py-32 px-6 md:px-12 lg:px-16 bg-[#F4EFE6] text-[#24231F] border-b border-[#DED5C8]"
+      className="py-24 sm:py-32 px-6 md:px-12 lg:px-16 bg-[var(--vestra-bg)] text-[var(--vestra-text)] border-b border-[var(--vestra-border-soft)] transition-colors duration-200"
     >
       <div className="max-w-7xl mx-auto w-full">
         {/* Section Header */}
         <div className="flex flex-col lg:flex-row lg:items-end justify-between mb-14 md:mb-18 gap-6">
           <div className="max-w-2xl">
-            <span className="text-[10px] font-mono uppercase tracking-[0.25em] text-[#A95239] font-bold block mb-2">
+            <span className="text-[10px] font-mono uppercase tracking-[0.25em] text-[var(--vestra-action)] font-bold block mb-2">
               VAULT ARCHITECTURE // DIGITAL INVENTORY
             </span>
-            <h2 className="font-serif text-4xl sm:text-5xl md:text-6xl font-normal text-[#24231F] tracking-tight leading-[1.05]">
+            <h2 className="font-serif text-4xl sm:text-5xl md:text-6xl font-normal text-[var(--vestra-text)] tracking-tight leading-[1.05]">
               Your Entire Closet,
               <br />
-              <span className="italic font-serif text-[#A95239]">Digitized & Connected.</span>
+              <span className="italic font-serif text-[var(--vestra-action)]">Digitized & Connected.</span>
             </h2>
           </div>
 
-          <p className="text-sm md:text-base text-[#6D6961] max-w-md font-sans leading-relaxed">
-            Stop buying pieces that don’t fit your rotation. VAYN extracts cuts, textures, and formality to unlock dozens of combinations from clothes you already own.
+          <p className="text-sm md:text-base text-[var(--vestra-text-body)] max-w-md font-sans leading-relaxed">
+            Stop buying pieces that don’t fit your rotation. VESTRA extracts cuts, textures, and formality to unlock dozens of combinations from clothes you already own.
           </p>
         </div>
 
         {/* Filter Tabs & Catalog CTA */}
-        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-10 pb-4 border-b border-[#DED5C8]">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-10 pb-4 border-b border-[var(--vestra-border-soft)]">
           <div className="flex items-center gap-2 overflow-x-auto no-scrollbar">
             {categoryTabs.map((tab) => (
               <button
                 key={tab.id}
                 onClick={() => setActiveTab(tab.id)}
-                className={`px-4 py-2 rounded-sm border font-mono text-xs uppercase tracking-wider transition-all whitespace-nowrap ${
+                className={`px-4 py-2 rounded-sm border font-mono text-xs uppercase tracking-wider transition-all whitespace-nowrap cursor-pointer ${
                   activeTab === tab.id
-                    ? 'bg-[#24231F] text-[#F8F4ED] border-[#24231F] font-bold'
-                    : 'bg-[#E9E1D6]/60 text-[#6D6961] border-[#DED5C8] hover:border-[#A95239] hover:text-[#24231F]'
+                    ? 'bg-[var(--vestra-action)] text-[var(--vestra-action-text)] border-[var(--vestra-action)] font-bold'
+                    : 'bg-[var(--vestra-surface-alt)] text-[var(--vestra-text-muted)] border-[var(--vestra-border-soft)] hover:border-[var(--vestra-action)] hover:text-[var(--vestra-text)]'
                 }`}
               >
                 {tab.label}
@@ -160,18 +160,17 @@ export function WardrobeSection() {
           </div>
 
           <Link href="/wardrobe" className="shrink-0">
-            <VaynButton
+            <VestraButton
               variant="secondary"
               size="sm"
-              className="border-[#DED5C8] hover:border-[#A95239] text-[#24231F] bg-[#E9E1D6]/70"
-              leftIcon={<Plus className="h-3.5 w-3.5 text-[#A95239]" />}
+              leftIcon={<Plus className="h-3.5 w-3.5 text-[var(--vestra-action)]" />}
             >
               Catalog Garment
-            </VaynButton>
+            </VestraButton>
           </Link>
         </div>
 
-        {/* Garment Cards Grid */}
+        {/* Vault Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
           <AnimatePresence>
             {filteredItems.map((item, idx) => (
@@ -181,56 +180,46 @@ export function WardrobeSection() {
                 initial={{ opacity: 0, scale: 0.95 }}
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.95 }}
-                transition={{ duration: 0.4, delay: idx * 0.05 }}
-                className="bg-[#E9E1D6]/40 border border-[#DED5C8] rounded-sm overflow-hidden flex flex-col justify-between group hover:border-[#A95239] hover:shadow-lg transition-all"
+                transition={{ duration: 0.35, delay: idx * 0.05 }}
+                className="bg-[var(--vestra-surface)] border border-[var(--vestra-border-soft)] rounded-sm overflow-hidden group shadow-md hover:border-[var(--vestra-action)] transition-all"
               >
-                {/* Image Section */}
-                <div className="relative aspect-[3/4] bg-[#24231F] overflow-hidden">
+                {/* Garment Image */}
+                <div className="relative aspect-[4/5] w-full overflow-hidden bg-[var(--vestra-surface-alt)]">
                   <Image
                     src={item.imageUrl}
                     alt={item.name}
                     fill
-                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                    className="object-cover object-center group-hover:scale-105 transition-transform duration-700"
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                    className="object-cover object-center group-hover:scale-105 transition-transform duration-500"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#24231F]/70 via-transparent to-transparent opacity-50" />
-
-                  {/* Category Pill Top Left */}
-                  <div className="absolute top-3 left-3 bg-[#24231F]/90 backdrop-blur-sm px-2.5 py-1 rounded-sm text-[9px] font-mono uppercase tracking-widest text-[#F8F4ED]">
+                  <div className="absolute top-3 left-3 bg-[var(--vestra-surface)]/90 backdrop-blur-sm px-2.5 py-1 rounded text-[9px] font-mono uppercase tracking-wider text-[var(--vestra-text)] border border-[var(--vestra-border-soft)]">
                     {item.categoryLabel}
                   </div>
-
-                  {/* Versatility Score Top Right */}
-                  <div className="absolute top-3 right-3 bg-[#A95239] text-[#F8F4ED] px-2 py-0.5 rounded-sm font-mono text-[10px] font-bold">
+                  <div className="absolute top-3 right-3 bg-[var(--vestra-action)] text-[var(--vestra-action-text)] px-2 py-0.5 rounded text-[10px] font-mono font-bold">
                     ★ {item.versatilityScore}
                   </div>
                 </div>
 
-                {/* Garment Details Bottom */}
-                <div className="p-5 flex flex-col justify-between flex-1">
-                  <div>
-                    <h3 className="font-serif text-lg font-normal text-[#24231F] group-hover:text-[#A95239] transition-colors leading-snug">
-                      {item.name}
-                    </h3>
-                    <p className="text-xs text-[#6D6961] mt-1 font-mono">
-                      {item.material} • {item.formality}
-                    </p>
-                  </div>
+                {/* Card Content */}
+                <div className="p-5 space-y-3">
+                  <h4 className="font-serif text-lg text-[var(--vestra-text)] group-hover:text-[var(--vestra-action)] transition-colors line-clamp-1">
+                    {item.name}
+                  </h4>
 
-                  <div className="pt-4 mt-4 border-t border-[#DED5C8] flex items-center justify-between text-xs">
-                    <div className="flex items-center gap-2">
+                  <div className="flex items-center justify-between text-xs text-[var(--vestra-text-muted)] font-mono">
+                    <span>{item.material}</span>
+                    <span className="flex items-center gap-1.5">
                       <span
-                        className="h-2.5 w-2.5 rounded-full border border-black/30"
+                        className="h-2.5 w-2.5 rounded-full border border-black/20"
                         style={{ backgroundColor: item.colorHex }}
                       />
-                      <span className="text-[11px] font-mono text-[#6D6961]">
-                        {item.colorName}
-                      </span>
-                    </div>
-
-                    <span className="text-[10px] font-mono text-[#737A60] font-semibold uppercase">
-                      IN ACTIVE ROTATION
+                      <span>{item.colorName}</span>
                     </span>
+                  </div>
+
+                  <div className="pt-2 border-t border-[var(--vestra-border-soft)] flex items-center justify-between text-[11px] font-mono text-[var(--vestra-text-muted)]">
+                    <span>{item.formality}</span>
+                    <span className="text-[var(--vestra-action)] font-semibold">CALIBRATED</span>
                   </div>
                 </div>
               </motion.div>
@@ -238,21 +227,22 @@ export function WardrobeSection() {
           </AnimatePresence>
         </div>
 
-        {/* Footer Banner */}
-        <div className="mt-14 pt-8 border-t border-[#DED5C8] flex flex-col sm:flex-row items-center justify-between gap-4">
-          <p className="text-xs font-mono text-[#6D6961]">
-            ZERO-HALLUCINATION GUARANTEE: CAPSULES ARE COMPOSED ONLY FROM REAL WARDROBE IDS
-          </p>
-
+        {/* Vault Footnote Banner */}
+        <div className="mt-12 p-6 bg-[var(--vestra-surface-alt)] border border-[var(--vestra-border-soft)] rounded-sm flex flex-col sm:flex-row items-center justify-between gap-4">
+          <div className="flex items-center gap-3">
+            <span className="h-2 w-2 rounded-full bg-[var(--vestra-action)]" />
+            <p className="text-xs text-[var(--vestra-text-body)] font-sans">
+              Instant auto-tagging across fabrics, sleeve cuts, color undertones, and versatility metrics.
+            </p>
+          </div>
           <Link href="/wardrobe">
-            <VaynButton
-              variant="primary"
-              size="md"
-              className="bg-[#A95239] hover:bg-[#8D442F] text-[#F8F4ED]"
-              rightIcon={<ArrowRight className="h-4 w-4" />}
+            <VestraButton
+              variant="secondary"
+              size="sm"
+              rightIcon={<ArrowRight className="h-3.5 w-3.5" />}
             >
-              Open Your Digital Vault
-            </VaynButton>
+              Open Digital Vault
+            </VestraButton>
           </Link>
         </div>
       </div>

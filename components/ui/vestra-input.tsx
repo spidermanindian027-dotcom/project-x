@@ -20,7 +20,7 @@ export const VestraInput = React.forwardRef<HTMLInputElement, VestraInputProps>(
         {label && (
           <label
             htmlFor={inputId}
-            className="block text-xs font-medium uppercase tracking-wider text-[#9ca3af]"
+            className="block text-xs font-medium uppercase tracking-wider text-[var(--vestra-text-muted)]"
           >
             {label}
           </label>
@@ -31,7 +31,7 @@ export const VestraInput = React.forwardRef<HTMLInputElement, VestraInputProps>(
             type={type}
             ref={ref}
             className={cn(
-              'w-full bg-[#262626] border border-[#9ca3af]/20 px-3.5 py-2.5 text-sm text-[#f5f0e8] placeholder:text-[#9ca3af]/50 focus:border-[#e8c547] focus:outline-none focus:ring-1 focus:ring-[#e8c547] transition-all rounded-sm disabled:cursor-not-allowed disabled:opacity-50',
+              'w-full bg-[var(--vestra-surface)] border border-[var(--vestra-border)] px-3.5 py-2.5 text-sm text-[var(--vestra-text)] placeholder:text-[var(--vestra-text-muted)]/70 focus:border-[var(--vestra-action)] focus:outline-none focus:ring-1 focus:ring-[var(--vestra-action)] transition-all rounded-sm disabled:cursor-not-allowed disabled:opacity-50',
               error && 'border-red-500/70 focus:border-red-500 focus:ring-red-500',
               rightElement && 'pr-10',
               className
@@ -39,7 +39,7 @@ export const VestraInput = React.forwardRef<HTMLInputElement, VestraInputProps>(
             {...props}
           />
           {rightElement && (
-            <div className="absolute right-3 flex items-center text-[#9ca3af]">
+            <div className="absolute right-3 flex items-center text-[var(--vestra-text-muted)]">
               {rightElement}
             </div>
           )}
@@ -47,7 +47,7 @@ export const VestraInput = React.forwardRef<HTMLInputElement, VestraInputProps>(
         {error ? (
           <p className="text-xs text-red-400 mt-1">{error}</p>
         ) : hint ? (
-          <p className="text-xs text-[#9ca3af]/70 mt-1">{hint}</p>
+          <p className="text-xs text-[var(--vestra-text-muted)]/70 mt-1">{hint}</p>
         ) : null}
       </div>
     );

@@ -50,15 +50,15 @@ export function AppSidebar() {
   return (
     <aside
       className={cn(
-        'hidden md:flex flex-col border-r border-[#DED5C8]/10 bg-[#1F1E1B] transition-all duration-300 min-h-[calc(100vh-57px)] sticky top-[57px] shrink-0',
+        'hidden md:flex flex-col border-r border-[var(--vestra-border-soft)] bg-[var(--vestra-surface)] transition-all duration-300 min-h-[calc(100vh-57px)] sticky top-[57px] shrink-0',
         collapsed ? 'w-16' : 'w-64'
       )}
     >
       {/* Collapse Toggle */}
-      <div className="flex items-center justify-end px-3 py-2 border-b border-[#DED5C8]/10">
+      <div className="flex items-center justify-end px-3 py-2 border-b border-[var(--vestra-border-soft)]">
         <button
           onClick={() => setCollapsed(!collapsed)}
-          className="p-1.5 text-[#6D6961] hover:text-[#F4EFE6] hover:bg-white/5 rounded transition-colors"
+          className="p-1.5 text-[var(--vestra-text-muted)] hover:text-[var(--vestra-text)] hover:bg-[var(--vestra-surface-alt)] rounded transition-colors cursor-pointer"
           title={collapsed ? 'Expand sidebar' : 'Collapse sidebar'}
         >
           {collapsed ? (
@@ -82,15 +82,15 @@ export function AppSidebar() {
               className={cn(
                 'group flex items-center gap-3 px-3 py-2.5 text-xs font-medium transition-all rounded relative',
                 isActive
-                  ? 'bg-[#A95239]/12 text-[#F4EFE6] border-l-2 border-[#A95239]'
-                  : 'text-[#6D6961] hover:text-[#F4EFE6] hover:bg-white/5 border-l-2 border-transparent'
+                  ? 'bg-[var(--vestra-action)]/15 text-[var(--vestra-text)] border-l-2 border-[var(--vestra-action)]'
+                  : 'text-[var(--vestra-text-muted)] hover:text-[var(--vestra-text)] hover:bg-[var(--vestra-surface-alt)] border-l-2 border-transparent'
               )}
               title={collapsed ? item.label : undefined}
             >
               <Icon
                 className={cn(
                   'h-4 w-4 shrink-0 transition-colors',
-                  isActive ? 'text-[#A95239]' : 'text-[#6D6961] group-hover:text-[#F4EFE6]'
+                  isActive ? 'text-[var(--vestra-action)]' : 'text-[var(--vestra-text-muted)] group-hover:text-[var(--vestra-text)]'
                 )}
               />
               {!collapsed && (
@@ -112,20 +112,20 @@ export function AppSidebar() {
       </nav>
 
       {/* User Info / Editorial Badge Bottom */}
-      <div className="p-3 border-t border-[#DED5C8]/10 bg-[#24231F]/60">
+      <div className="p-3 border-t border-[var(--vestra-border-soft)] bg-[var(--vestra-surface-alt)]">
         {collapsed ? (
-          <div className="flex justify-center text-[#A95239]" title="VAYN Atelier Member">
+          <div className="flex justify-center text-[var(--vestra-action)]" title="VESTRA Maison Member">
             <ShieldCheck className="h-5 w-5" />
           </div>
         ) : (
           <div className="flex items-center justify-between text-[11px]">
             <div className="flex flex-col">
-              <span className="text-[#F4EFE6] font-medium tracking-wide">
-                VAYN Atelier
+              <span className="text-[var(--vestra-text)] font-medium tracking-wide">
+                VESTRA Maison
               </span>
-              <span className="text-[#6D6961] text-[10px]">Active Member</span>
+              <span className="text-[var(--vestra-text-muted)] text-[10px]">Active Member</span>
             </div>
-            <span className="h-2 w-2 rounded-full bg-[#A95239] animate-pulse" />
+            <span className="h-2 w-2 rounded-full bg-[var(--vestra-action)] animate-pulse" />
           </div>
         )}
       </div>

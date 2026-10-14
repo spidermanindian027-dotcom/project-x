@@ -12,7 +12,7 @@ export default async function AppLayout({
   const user = await getCurrentUser();
 
   return (
-    <div className="min-h-screen bg-[#1a1a1a] text-[#f5f0e8] flex flex-col pb-16 md:pb-0">
+    <div className="min-h-screen bg-[var(--vestra-bg)] text-[var(--vestra-text)] flex flex-col pb-16 md:pb-0 transition-colors duration-200">
       <AppHeader initialUser={user} />
       <div className="flex flex-1 w-full">
         <AppSidebar />

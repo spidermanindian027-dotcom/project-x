@@ -3,7 +3,7 @@
 import * as React from 'react';
 import Link from 'next/link';
 import { ErrorState } from '@/components/ui/error-state';
-import { VaynButton } from '@/components/ui/vestra-button';
+import { VestraButton } from '@/components/ui/vestra-button';
 
 export default function GlobalError({
   error,
@@ -17,7 +17,7 @@ export default function GlobalError({
   }, [error]);
 
   return (
-    <div className="min-h-screen bg-[#1C1B18] text-[#F4EFE6] flex flex-col items-center justify-center p-6">
+    <div className="min-h-screen bg-[var(--vestra-bg)] text-[var(--vestra-text)] flex flex-col items-center justify-center p-6 transition-colors duration-200">
       <div className="w-full max-w-md">
         <ErrorState
           title="Atelier Execution Error"
@@ -30,9 +30,9 @@ export default function GlobalError({
         />
         <div className="mt-4 text-center">
           <Link href="/">
-            <VaynButton variant="ghost" size="sm">
-              Return to VAYN Homepage
-            </VaynButton>
+            <VestraButton variant="ghost" size="sm">
+              Return to VESTRA Homepage
+            </VestraButton>
           </Link>
         </div>
       </div>

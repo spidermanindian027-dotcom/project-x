@@ -4,7 +4,7 @@ import * as React from 'react';
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Sparkles, ArrowRight, CheckCircle2 } from 'lucide-react';
-import { VaynButton } from '@/components/ui/vestra-button';
+import { VestraButton } from '@/components/ui/vestra-button';
 
 interface Archetype {
   id: string;
@@ -23,73 +23,73 @@ const archetypes: Archetype[] = [
     id: 'QUIET_LUXURY',
     name: 'Quiet Luxury',
     code: 'ARCH-01',
-    tagline: 'Understated elegance, cashmere, tonal neutrals.',
+    tagline: 'Understated elegance, brushed cashmere, tonal neutrals.',
     description:
-      'Focuses on supreme fabric quality, subtle branding, and tailored silhouettes. Dominated by camel, ivory, slate, and charcoal.',
+      'Focuses on supreme fabric quality, unbranded confidence, and tailored silhouettes. Dominated by camel, porcelain, slate, and umber.',
     silhouette: 'Relaxed Tailoring with Soft Shoulder Drape',
-    fabrics: ['Virgin Wool', 'Brushed Cashmere', 'Heavyweight Silk', 'Loro Piana Linen'],
+    fabrics: ['Virgin Wool', 'Brushed Cashmere', 'Heavyweight Silk', 'Italian Linen'],
     palette: [
-      { name: 'Warm Ivory', hex: '#F4EFE6' },
-      { name: 'Oatmeal Sand', hex: '#E9E1D6' },
-      { name: 'Deep Ink', hex: '#24231F' },
-      { name: 'Soft Muted', hex: '#6D6961' },
+      { name: 'Warm Porcelain', hex: '#F7F4EE' },
+      { name: 'Camel Sand', hex: '#EDEAE3' },
+      { name: 'Mineral Black', hex: '#171411' },
+      { name: 'Warm Umber', hex: '#6E543A' },
     ],
-    keyPieces: ['Oversized Double-Breasted Coat', 'Pleated Wool Trousers', 'Merino Crewneck'],
-  },
-  {
-    id: 'STREETWEAR_EDGE',
-    name: 'Streetwear Edge',
-    code: 'ARCH-02',
-    tagline: 'Boxy silhouettes, utility layers, bold statement pieces.',
-    description:
-      'Rooted in modern skate and urban culture. Characterized by oversized drops, modular utility vests, and expressive footwear.',
-    silhouette: 'Boxy Drop-Shoulder & Wide-Leg Proportion',
-    fabrics: ['Heavy Cotton Fleece (450gsm)', 'Ripstop Cordura', 'Raw Denim', 'Ballistic Nylon'],
-    palette: [
-      { name: 'Deep Ink', hex: '#24231F' },
-      { name: 'Terracotta', hex: '#A95239' },
-      { name: 'Muted Olive', hex: '#737A60' },
-      { name: 'Light Sand', hex: '#E9E1D6' },
-    ],
-    keyPieces: ['Structured Boxy Hoodie', 'Cargo Utility Pants', 'Lug-Sole Sneakers'],
+    keyPieces: ['Oversized Double-Breasted Trench', 'Pleated Wool Trousers', 'Merino Ribbed Knit'],
   },
   {
     id: 'MINIMAL_TAILORED',
     name: 'Minimal Tailored',
-    code: 'ARCH-03',
-    tagline: 'Precision suiting, clean drape, timeless monochrome.',
+    code: 'ARCH-02',
+    tagline: 'Precision suiting, clean drape, architectural seamwork.',
     description:
-      'Eliminates superfluous ornamentation in favor of crisp geometric cuts, monochromatic harmonies, and architectural seamwork.',
+      'Eliminates superfluous ornamentation in favor of crisp geometric cuts, monochromatic harmonies, and architectural precision.',
     silhouette: 'Straight Columnar & Clean Seamlines',
     fabrics: ['High-Twist Wool Crepe', 'Crisp Poplin Cotton', 'Matte Viscose', 'Structured Gabardine'],
     palette: [
-      { name: 'Pure Ink', hex: '#1C1B18' },
-      { name: 'Charcoal', hex: '#2D2B26' },
-      { name: 'Muted Silver', hex: '#6D6961' },
-      { name: 'Porcelain Ivory', hex: '#F8F4ED' },
+      { name: 'Deep Mineral', hex: '#171411' },
+      { name: 'Charcoal Shadow', hex: '#252018' },
+      { name: 'Bronze Highlight', hex: '#8B6F4E' },
+      { name: 'Porcelain White', hex: '#F7F4EE' },
     ],
-    keyPieces: ['Collarless Tailored Blazer', 'Straight-Cut Trousers', 'Poplin Button-Down'],
+    keyPieces: ['Collarless Tailored Blazer', 'Straight-Cut Trousers', 'Crisp Poplin Shirt'],
   },
   {
     id: 'OLD_MONEY',
-    name: 'Old Money',
-    code: 'ARCH-04',
+    name: 'Old Money Modern',
+    code: 'ARCH-03',
     tagline: 'Cable knits, collegiate heritage, equestrian undertones.',
     description:
-      'Timeless European and New England country elegance. Emphasizes generational heritage, traditional knitwear, and equestrian leathers.',
+      'Timeless continental elegance. Emphasizes generational heritage, traditional knitwear textures, and fine saddle leathers.',
     silhouette: 'Classic Structured Silhouette with Heritage Proportions',
-    fabrics: ['Cable-Knit Wool', 'Oxford Cotton', 'Tweed Herringbone', 'Fine Suede Leather'],
+    fabrics: ['Cable-Knit Wool', 'Oxford Cotton', 'Tweed Herringbone', 'Fine Suede'],
     palette: [
-      { name: 'Heritage Navy', hex: '#2C3E50' },
-      { name: 'Forest Olive', hex: '#737A60' },
-      { name: 'Cream Sand', hex: '#E9E1D6' },
-      { name: 'Cognac', hex: '#8E442F' },
+      { name: 'Heritage Midnight', hex: '#1E1A16' },
+      { name: 'Antique Bronze', hex: '#8B6F4E' },
+      { name: 'Alabaster Silk', hex: '#F0ECE5' },
+      { name: 'Warm Gold', hex: '#C2A578' },
     ],
-    keyPieces: ['Chunky Cable Knit Sweater', 'Pleated Chinos', 'Penny Loafers'],
+    keyPieces: ['Chunky Cable Knit Sweater', 'Pleated Wool Chinos', 'Italian Loafers'],
+  },
+  {
+    id: 'STREETWEAR_EDGE',
+    name: 'Contemporary Edge',
+    code: 'ARCH-04',
+    tagline: 'Boxy silhouettes, utility layers, bold statement volumes.',
+    description:
+      'Rooted in modern metropolitan culture. Characterized by oversized drops, modular utility vests, and expressive technical fabrics.',
+    silhouette: 'Boxy Drop-Shoulder & Wide-Leg Proportion',
+    fabrics: ['Heavy Cotton Fleece (480gsm)', 'Cordura Canvas', 'Raw Japanese Denim', 'Matte Nylon'],
+    palette: [
+      { name: 'Mineral Black', hex: '#171411' },
+      { name: 'Warm Umber', hex: '#6E543A' },
+      { name: 'Muted Gold', hex: '#C8B99A' },
+      { name: 'Pale Porcelain', hex: '#EDEAE3' },
+    ],
+    keyPieces: ['Structured Boxy Hoodie', 'Double-Knee Utility Trousers', 'Chunky Leather Boots'],
   },
   {
     id: 'AVANT_GARDE',
-    name: 'Avant-Garde',
+    name: 'Avant-Garde Atelier',
     code: 'ARCH-05',
     tagline: 'Deconstructed forms, asymmetrical hems, sculptural volume.',
     description:
@@ -97,12 +97,12 @@ const archetypes: Archetype[] = [
     silhouette: 'Deconstructed Sculptural Asymmetry',
     fabrics: ['Waxed Canvas', 'Distressed Linen', 'Crinkled Cupro', 'Bonded Neoprene'],
     palette: [
-      { name: 'Obsidian Black', hex: '#181715' },
-      { name: 'Dark Ink', hex: '#24231F' },
-      { name: 'Smoky Slate', hex: '#4A463F' },
-      { name: 'Terracotta Accent', hex: '#A95239' },
+      { name: 'Obsidian Black', hex: '#171411' },
+      { name: 'Dark Umber', hex: '#2E2822' },
+      { name: 'Muted Bronze', hex: '#8B6F4E' },
+      { name: 'Warm Gold Accent', hex: '#C2A578' },
     ],
-    keyPieces: ['Asymmetrical Drape Jacket', 'Layered Drop-Crotch Pants', 'Combat Boots'],
+    keyPieces: ['Asymmetrical Drape Coat', 'Layered Drop-Crotch Pants', 'Square-Toe Boots'],
   },
 ];
 
@@ -115,21 +115,21 @@ export function StyleDiscoverySection() {
   return (
     <section
       id="discover"
-      className="py-24 sm:py-32 px-6 md:px-12 lg:px-16 bg-[#E9E1D6]/40 text-[#24231F] border-b border-[#DED5C8]"
+      className="py-24 sm:py-32 px-6 md:px-12 lg:px-16 bg-[var(--vestra-bg-alt)] text-[var(--vestra-text)] border-b border-[var(--vestra-border-soft)] transition-colors duration-200"
     >
       <div className="max-w-7xl mx-auto w-full">
         {/* Section Header */}
         <div className="max-w-3xl mb-16 md:mb-20">
-          <span className="text-[10px] font-mono uppercase tracking-[0.25em] text-[#A95239] font-bold block mb-2">
+          <span className="text-[10px] font-mono uppercase tracking-[0.25em] text-[var(--vestra-action)] font-bold block mb-2">
             AESTHETIC CALIBRATION ENGINE
           </span>
-          <h2 className="font-serif text-4xl sm:text-5xl md:text-6xl font-normal text-[#24231F] tracking-tight leading-[1.05]">
+          <h2 className="font-serif text-4xl sm:text-5xl md:text-6xl font-normal text-[var(--vestra-text)] tracking-tight leading-[1.05]">
             Discover Your
             <br />
-            <span className="italic font-serif text-[#A95239]">Signature Archetype.</span>
+            <span className="italic font-serif text-[var(--vestra-action)]">Signature Archetype.</span>
           </h2>
-          <p className="mt-4 text-sm md:text-base text-[#6D6961] max-w-xl font-sans leading-relaxed">
-            Personal style is not about following every trend — it is finding the silhouette architecture that feels instinctively true to you. Select an archetype to inspect its DNA.
+          <p className="mt-4 text-sm md:text-base text-[var(--vestra-text-body)] max-w-xl font-sans leading-relaxed">
+            Personal style is not about following fleeting micro-trends — it is finding the silhouette architecture and tonal balance that feels instinctively true to you. Select an archetype to inspect its DNA.
           </p>
         </div>
 
@@ -141,19 +141,19 @@ export function StyleDiscoverySection() {
               <button
                 key={arch.id}
                 onClick={() => setSelectedId(arch.id)}
-                className={`px-5 py-3 rounded-sm border font-mono text-xs uppercase tracking-wider transition-all whitespace-nowrap flex items-center gap-2.5 ${
+                className={`px-5 py-3 rounded-sm border font-mono text-xs uppercase tracking-wider transition-all whitespace-nowrap flex items-center gap-2.5 cursor-pointer ${
                   isSelected
-                    ? 'bg-[#24231F] text-[#F8F4ED] border-[#24231F] shadow-md'
-                    : 'bg-[#F4EFE6] text-[#6D6961] border-[#DED5C8] hover:border-[#A95239] hover:text-[#24231F]'
+                    ? 'bg-[var(--vestra-action)] text-[var(--vestra-action-text)] border-[var(--vestra-action)] shadow-md'
+                    : 'bg-[var(--vestra-surface)] text-[var(--vestra-text-muted)] border-[var(--vestra-border-soft)] hover:border-[var(--vestra-action)] hover:text-[var(--vestra-text)]'
                 }`}
               >
                 <span
                   className={`h-1.5 w-1.5 rounded-full ${
-                    isSelected ? 'bg-[#A95239]' : 'bg-[#DED5C8]'
+                    isSelected ? 'bg-[var(--vestra-action-text)]' : 'bg-[var(--vestra-border)]'
                   }`}
                 />
                 <span>{arch.name}</span>
-                <span className="text-[10px] opacity-60">[{arch.code}]</span>
+                <span className="text-[10px] opacity-70">[{arch.code}]</span>
               </button>
             );
           })}
@@ -167,51 +167,51 @@ export function StyleDiscoverySection() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -16 }}
             transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-            className="bg-[#F4EFE6] border border-[#DED5C8] rounded-sm p-8 sm:p-10 md:p-12 shadow-xl grid grid-cols-1 lg:grid-cols-12 gap-8 md:gap-12"
+            className="bg-[var(--vestra-surface)] border border-[var(--vestra-border-soft)] rounded-sm p-8 sm:p-10 md:p-12 shadow-xl grid grid-cols-1 lg:grid-cols-12 gap-8 md:gap-12"
           >
             {/* Left Blueprint Details (Cols 1-7) */}
             <div className="lg:col-span-7 flex flex-col justify-between">
               <div>
                 <div className="flex items-center justify-between mb-4">
-                  <span className="text-[11px] font-mono uppercase tracking-[0.25em] text-[#A95239] font-bold">
-                    {selectedArchetype.code} {'//'} ATELIER PROFILE
+                  <span className="text-[11px] font-mono uppercase tracking-[0.25em] text-[var(--vestra-action)] font-bold">
+                    {selectedArchetype.code} {'//'} MAISON PROFILE
                   </span>
-                  <span className="px-2.5 py-0.5 rounded-sm bg-[#737A60]/10 border border-[#737A60]/30 text-[#737A60] font-mono text-[10px] uppercase">
+                  <span className="px-2.5 py-0.5 rounded-sm bg-[var(--vestra-accent)]/15 border border-[var(--vestra-accent)]/30 text-[var(--vestra-accent)] font-mono text-[10px] uppercase font-semibold">
                     CALIBRATED MATRIX
                   </span>
                 </div>
 
-                <h3 className="font-serif text-3xl sm:text-4xl text-[#24231F] font-normal mb-2">
+                <h3 className="font-serif text-3xl sm:text-4xl text-[var(--vestra-text)] font-normal mb-2">
                   {selectedArchetype.name}
                 </h3>
-                <p className="text-sm font-sans text-[#A95239] font-medium mb-4">
+                <p className="text-sm font-sans text-[var(--vestra-action)] font-medium mb-4">
                   {selectedArchetype.tagline}
                 </p>
 
-                <p className="text-xs sm:text-sm text-[#6D6961] leading-relaxed mb-6">
+                <p className="text-xs sm:text-sm text-[var(--vestra-text-body)] leading-relaxed mb-6">
                   {selectedArchetype.description}
                 </p>
 
                 {/* Silhouette & Fabrics Breakdown */}
-                <div className="space-y-4 pt-4 border-t border-[#DED5C8]">
+                <div className="space-y-4 pt-4 border-t border-[var(--vestra-border-soft)]">
                   <div>
-                    <span className="text-[10px] font-mono uppercase tracking-widest text-[#6D6961] block mb-1">
+                    <span className="text-[10px] font-mono uppercase tracking-widest text-[var(--vestra-text-muted)] block mb-1">
                       Silhouette Geometry
                     </span>
-                    <p className="text-xs sm:text-sm font-medium text-[#24231F]">
+                    <p className="text-xs sm:text-sm font-medium text-[var(--vestra-text)]">
                       {selectedArchetype.silhouette}
                     </p>
                   </div>
 
                   <div>
-                    <span className="text-[10px] font-mono uppercase tracking-widest text-[#6D6961] block mb-1.5">
+                    <span className="text-[10px] font-mono uppercase tracking-widest text-[var(--vestra-text-muted)] block mb-1.5">
                       Signature Textiles & Fabrics
                     </span>
                     <div className="flex flex-wrap gap-2">
                       {selectedArchetype.fabrics.map((fabric) => (
                         <span
                           key={fabric}
-                          className="px-2.5 py-1 bg-[#E9E1D6]/70 border border-[#DED5C8] rounded-sm text-[11px] font-mono text-[#24231F]"
+                          className="px-2.5 py-1 bg-[var(--vestra-surface-alt)] border border-[var(--vestra-border-soft)] rounded-sm text-[11px] font-mono text-[var(--vestra-text)]"
                         >
                           {fabric}
                         </span>
@@ -222,29 +222,28 @@ export function StyleDiscoverySection() {
               </div>
 
               {/* Action Link to Onboarding Quiz */}
-              <div className="pt-8 mt-8 border-t border-[#DED5C8] flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
-                <div className="flex items-center gap-2 text-xs text-[#737A60] font-mono">
-                  <CheckCircle2 className="h-4 w-4 text-[#737A60]" />
+              <div className="pt-8 mt-8 border-t border-[var(--vestra-border-soft)] flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+                <div className="flex items-center gap-2 text-xs text-[var(--vestra-text-muted)] font-mono">
+                  <CheckCircle2 className="h-4 w-4 text-[var(--vestra-action)]" />
                   <span>Integrated in 6-Step Fitting Profile</span>
                 </div>
 
                 <Link href="/onboarding">
-                  <VaynButton
+                  <VestraButton
                     variant="primary"
                     size="md"
-                    className="bg-[#A95239] hover:bg-[#8D442F] text-[#F8F4ED]"
                     rightIcon={<ArrowRight className="h-3.5 w-3.5" />}
                   >
                     Calibrate This Style
-                  </VaynButton>
+                  </VestraButton>
                 </Link>
               </div>
             </div>
 
             {/* Right Chromatic & Key Pieces Panel (Cols 8-12) */}
-            <div className="lg:col-span-5 bg-[#E9E1D6]/50 border border-[#DED5C8] rounded-sm p-6 sm:p-8 flex flex-col justify-between">
+            <div className="lg:col-span-5 bg-[var(--vestra-surface-alt)] border border-[var(--vestra-border-soft)] rounded-sm p-6 sm:p-8 flex flex-col justify-between">
               <div>
-                <span className="text-[10px] font-mono uppercase tracking-widest text-[#A95239] font-bold block mb-4">
+                <span className="text-[10px] font-mono uppercase tracking-widest text-[var(--vestra-action)] font-bold block mb-4">
                   CHROMATIC HARMONY PALETTE
                 </span>
 
@@ -257,25 +256,25 @@ export function StyleDiscoverySection() {
                           className="h-6 w-6 rounded-full border border-black/20 shadow-sm"
                           style={{ backgroundColor: swatch.hex }}
                         />
-                        <span className="text-xs font-medium text-[#24231F]">
+                        <span className="text-xs font-medium text-[var(--vestra-text)]">
                           {swatch.name}
                         </span>
                       </div>
-                      <span className="font-mono text-[11px] text-[#6D6961]">
+                      <span className="font-mono text-[11px] text-[var(--vestra-text-muted)]">
                         {swatch.hex}
                       </span>
                     </div>
                   ))}
                 </div>
 
-                <span className="text-[10px] font-mono uppercase tracking-widest text-[#A95239] font-bold block mb-3 pt-4 border-t border-[#DED5C8]">
+                <span className="text-[10px] font-mono uppercase tracking-widest text-[var(--vestra-action)] font-bold block mb-3 pt-4 border-t border-[var(--vestra-border-soft)]">
                   CORE CAPSULE ANCHOR PIECES
                 </span>
 
-                <ul className="space-y-2 text-xs text-[#24231F]">
+                <ul className="space-y-2 text-xs text-[var(--vestra-text-body)]">
                   {selectedArchetype.keyPieces.map((piece, i) => (
                     <li key={i} className="flex items-center gap-2">
-                      <span className="text-[#A95239] font-mono text-[10px] font-bold">
+                      <span className="text-[var(--vestra-action)] font-mono text-[10px] font-bold">
                         0{i + 1}.
                       </span>
                       <span>{piece}</span>
@@ -284,9 +283,9 @@ export function StyleDiscoverySection() {
                 </ul>
               </div>
 
-              <div className="mt-6 pt-4 border-t border-[#DED5C8] flex items-center justify-between text-[11px] font-mono text-[#6D6961]">
-                <span>CONFIDENCE SCORE: 96%</span>
-                <Sparkles className="h-4 w-4 text-[#A95239]" />
+              <div className="mt-6 pt-4 border-t border-[var(--vestra-border-soft)] flex items-center justify-between text-[11px] font-mono text-[var(--vestra-text-muted)]">
+                <span>CONFIDENCE SCORE: 98%</span>
+                <Sparkles className="h-4 w-4 text-[var(--vestra-action)]" />
               </div>
             </div>
           </motion.div>

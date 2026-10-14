@@ -18,7 +18,7 @@ export function MobileNav() {
   ];
 
   return (
-    <nav className="md:hidden fixed bottom-0 left-0 right-0 z-50 bg-[#1F1E1B]/95 backdrop-blur-lg border-t border-[#DED5C8]/15 px-3 py-2 flex items-center justify-around">
+    <nav className="md:hidden fixed bottom-0 left-0 right-0 z-50 bg-[var(--vestra-surface)]/95 backdrop-blur-lg border-t border-[var(--vestra-border-soft)] px-3 py-2 flex items-center justify-around transition-colors duration-200">
       {items.map((item) => {
         const Icon = item.icon;
         const isActive = pathname === item.href;
@@ -30,14 +30,14 @@ export function MobileNav() {
             className={cn(
               'flex flex-col items-center justify-center py-1 px-2 text-[10px] tracking-wider transition-colors',
               isActive
-                ? 'text-[#A95239]'
-                : 'text-[#6D6961] hover:text-[#F4EFE6]'
+                ? 'text-[var(--vestra-action)] font-semibold'
+                : 'text-[var(--vestra-text-muted)] hover:text-[var(--vestra-text)]'
             )}
           >
             <Icon
               className={cn(
                 'h-5 w-5 mb-1 transition-transform',
-                isActive && 'scale-110'
+                isActive && 'scale-110 text-[var(--vestra-action)]'
               )}
             />
             <span>{item.label}</span>

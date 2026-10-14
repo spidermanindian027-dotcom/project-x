@@ -3,14 +3,14 @@ import { cva, type VariantProps } from 'class-variance-authority';
 import { cn } from '@/lib/utils';
 
 export const cardVariants = cva(
-  'rounded-sm transition-all duration-200 text-[#F4EFE6]',
+  'rounded-sm transition-all duration-200 text-[var(--vestra-text)]',
   {
     variants: {
       variant: {
-        default: 'bg-[#24231F] border border-[#DED5C8]/15',
-        bordered: 'bg-[#1C1B18] border border-[#DED5C8]/25 hover:border-[#A95239]/60',
-        elevated: 'bg-[#24231F] border border-[#DED5C8]/20 shadow-xl shadow-black/40',
-        light: 'bg-[#F8F4ED] text-[#24231F] border border-[#DED5C8] shadow-sm',
+        default: 'bg-[var(--vestra-surface)] border border-[var(--vestra-border-soft)]',
+        bordered: 'bg-[var(--vestra-surface-alt)] border border-[var(--vestra-border-soft)] hover:border-[var(--vestra-action)]',
+        elevated: 'bg-[var(--vestra-surface)] border border-[var(--vestra-border-soft)] shadow-xl shadow-black/10',
+        light: 'bg-[var(--vestra-surface-alt)] text-[var(--vestra-text)] border border-[var(--vestra-border-soft)] shadow-sm',
       },
       padding: {
         none: 'p-0',
@@ -50,7 +50,7 @@ export const VestraCardHeader = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <div
     ref={ref}
-    className={cn('flex flex-col space-y-1.5 pb-4 border-b border-[#DED5C8]/15', className)}
+    className={cn('flex flex-col space-y-1.5 pb-4 border-b border-[var(--vestra-border-soft)]', className)}
     {...props}
   />
 ));
@@ -62,7 +62,7 @@ export const VestraCardTitle = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <h3
     ref={ref}
-    className={cn('font-serif text-lg font-semibold tracking-wide text-[#F4EFE6]', className)}
+    className={cn('font-serif text-lg font-semibold tracking-wide text-[var(--vestra-text)]', className)}
     {...props}
   />
 ));
@@ -74,7 +74,7 @@ export const VestraCardDescription = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <p
     ref={ref}
-    className={cn('text-xs text-[#E9E1D6]/70 leading-relaxed font-sans', className)}
+    className={cn('text-xs text-[var(--vestra-text-muted)] leading-relaxed font-sans', className)}
     {...props}
   />
 ));
@@ -94,7 +94,7 @@ export const VestraCardFooter = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <div
     ref={ref}
-    className={cn('flex items-center pt-4 border-t border-[#DED5C8]/15 mt-4', className)}
+    className={cn('flex items-center pt-4 border-t border-[var(--vestra-border-soft)] mt-4', className)}
     {...props}
   />
 ));
